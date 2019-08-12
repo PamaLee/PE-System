@@ -6435,7 +6435,7 @@
     var queueName = '__md_snackbar';
 
     var DEFAULT = {
-      timeout: 4000,                  // 在用户没有操作时多长时间自动隐藏
+      timeout: 6000,                  // 在用户没有操作时多长时间自动隐藏
       buttonText: '',                 // 按钮的文本
       buttonColor: '',                // 按钮的颜色，支持 blue #90caf9 rgba(...)
       position: 'bottom',             // 位置 bottom、top、left-top、left-bottom、right-top、right-bottom

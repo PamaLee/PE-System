@@ -13,16 +13,3 @@
  * 創建時間：上午8:23
  * 所屬項目名稱：PE-System
  */
-include_once "./verb.php";
-$title="主页";
-$location="./";
-include "./hearder.php";
-
-?>
-
-<div class="mdui-container">
-    <h1>桂林市体育成绩系统</h1>
-    <h3>作者:桂林市18中---李嘉珂</h3>
-</div>
-</body>
-</html>

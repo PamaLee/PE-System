@@ -13,11 +13,7 @@
  * 創建時間：上午9:01
  * 所屬項目名稱：PE-System
  */
-ini_set('display_errors', 1);
 
-ini_set('display_startup_errors', 1);
-
-error_reporting(E_ALL);
 sleep(2);
 session_start();
 if (!isset($_GET['username'])){

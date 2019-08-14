@@ -25,7 +25,7 @@
    <style>
        @font-face {
            font-family: 'Number';   /*字体名称*/
-           src: url('public/fonts/Number.ttf');       /*字体源文件*/
+           src: url('public/fonts/blipper.ttf');       /*字体源文件*/
        }
        @font-face {
            font-family: "Chinese";

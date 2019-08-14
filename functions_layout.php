@@ -15,6 +15,9 @@
  * 所屬項目名稱：PE-System
  */
 
+/**
+ * @param $title
+ */
 function top_menu($title){
     echo "
 <div class=\"mdui-appbar\">

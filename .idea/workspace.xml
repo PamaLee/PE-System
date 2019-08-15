@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="108d169b-c5b9-4d57-8a58-4bbe5dafb56e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/class_mem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/spawn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/info.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/info_check.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/pwd.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/pwd_check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/class_mem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/class_mem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/spawn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/spawn.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/info_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info_check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/log_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/pwd.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/pwd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/pwd_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/pwd_check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/verb.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,20 +66,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="9634" />
+          <entry key="php" value="12138" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="9634" />
+          <entry key="HTML" value="1" />
+          <entry key="PHP" value="12136" />
           <entry key="PLAIN_TEXT" value="2" />
+          <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="js" value="1" />
-          <entry key="php" value="7" />
+          <entry key="php" value="14" />
           <entry key="sql" value="1" />
           <entry key="student" value="4" />
         </counts>
@@ -89,7 +90,7 @@
         <counts>
           <entry key="Database Element" value="4" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="7" />
+          <entry key="PHP" value="14" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -98,100 +99,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/index.php">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
+            <state relative-caret-position="140">
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
               <folding>
-                <element signature="e#6#412#0#PHP" expanded="true" />
+                <element signature="e#6#412#0#PHP" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/log_check.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/info_check.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/info.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/spawn.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/pwd.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="98" column="10" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="98" selection-end-column="10" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#2082#2766#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/log/pwd_check.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/verb.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-              <folding>
-                <element signature="e#6#413#0#PHP" expanded="true" />
-                <element signature="n#inject_check#0;n#!!top" />
-                <element signature="n#GetIP#0;n#!!top" />
-                <element signature="n#IP#0;n#!!top" />
-                <element signature="n#cloud#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/mdui.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8316">
-              <caret line="6419" column="22" selection-start-line="6419" selection-start-column="20" selection-end-line="6419" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -199,11 +113,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="288" column="22" lean-forward="true" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
+            <state relative-caret-position="388">
+              <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding>
-                <element signature="n#t#0;n#!!top" />
-                <element signature="n#get_info#0;n#!!top" />
+                <element signature="e#6#412#0#PHP" expanded="true" />
+                <element signature="n#message#0;n#!!top" />
                 <element signature="n#get_school_name_by_school_num#0;n#!!top" />
                 <element signature="n#get_school_name_by_user_name#0;n#!!top" />
                 <element signature="n#get_newest_test#0;n#!!top" />
@@ -223,8 +137,88 @@
                 <element signature="e#4396#4459#0#PHP" />
                 <element signature="n#get_res_long_run#0;n#!!top" />
                 <element signature="n#get_res_choose#0;n#!!top" />
-                <element signature="e#16382#17203#0#PHP" />
+                <element signature="n#get_choose_name#0;n#!!top" />
+                <element signature="n#test_insert#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/class_mem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="40" column="117" lean-forward="true" selection-start-line="40" selection-start-column="117" selection-end-line="40" selection-end-column="132" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/pwd.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/spawn.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2501">
+              <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/info_check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/log_check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/verb.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+              <folding>
+                <element signature="e#6#413#0#PHP" expanded="true" />
+                <element signature="n#inject_check#0;n#!!top" />
+                <element signature="n#GetIP#0;n#!!top" />
+                <element signature="n#IP#0;n#!!top" />
+                <element signature="n#cloud#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/pwd_check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -237,9 +231,11 @@
       <find>disable</find>
       <find>7</find>
       <find>sn</find>
+      <find>db.php</find>
     </findStrings>
     <replaceStrings>
       <replace>8</replace>
+      <replace>function.php</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -253,17 +249,17 @@
         <option value="$PROJECT_DIR$/public/js/mdui.js" />
         <option value="$PROJECT_DIR$/functions_layout.php" />
         <option value="$PROJECT_DIR$/hearder.php" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/app/class_mem.php" />
-        <option value="$PROJECT_DIR$/app/spawn.php" />
-        <option value="$PROJECT_DIR$/functions.php" />
         <option value="$PROJECT_DIR$/log/index.php" />
-        <option value="$PROJECT_DIR$/log/log_check.php" />
-        <option value="$PROJECT_DIR$/verb.php" />
-        <option value="$PROJECT_DIR$/log/pwd.php" />
-        <option value="$PROJECT_DIR$/log/info_check.php" />
         <option value="$PROJECT_DIR$/log/info.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/log/pwd.php" />
+        <option value="$PROJECT_DIR$/app/spawn.php" />
+        <option value="$PROJECT_DIR$/log/info_check.php" />
+        <option value="$PROJECT_DIR$/log/log_check.php" />
         <option value="$PROJECT_DIR$/log/pwd_check.php" />
+        <option value="$PROJECT_DIR$/verb.php" />
+        <option value="$PROJECT_DIR$/app/class_mem.php" />
       </list>
     </option>
   </component>
@@ -274,8 +270,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1972" />
-    <option name="y" value="23" />
+    <option name="x" value="2014" />
+    <option name="y" value="37" />
     <option name="width" value="1745" />
     <option name="height" value="990" />
   </component>
@@ -294,6 +290,11 @@
             <path>
               <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
               <item name="PE-System" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PE-System" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
@@ -364,15 +365,15 @@
       <workItem from="1565788641194" duration="5796000" />
       <workItem from="1565828826278" duration="2248000" />
       <workItem from="1565831295346" duration="418000" />
-      <workItem from="1565843438631" duration="9168000" />
+      <workItem from="1565843438631" duration="15042000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41785000" />
+    <option name="totallyTimeSpent" value="47659000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1972" y="23" width="1745" height="990" extended-state="0" />
+    <frame x="2014" y="37" width="1745" height="990" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977778" visible="true" weight="0.16931216" />
@@ -468,16 +469,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d0344d2c-24d0-40a2-95e2-5628e80086cb/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="e#6#412#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://d0344d2c-24d0-40a2-95e2-5628e80086cb/schema/pe/table/student">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -492,13 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/class_mem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/functions_layout.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -506,13 +490,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/mdui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8316">
+          <caret line="6419" column="22" selection-start-line="6419" selection-start-column="20" selection-end-line="6419" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4676">
+          <caret line="164" column="19" lean-forward="true" selection-start-line="158" selection-start-column="12" selection-end-line="164" selection-end-column="19" />
+          <folding>
+            <element signature="e#6#412#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/spawn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2501">
+          <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/info_check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/log_check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/pwd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/pwd_check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="e#6#412#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/verb.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="e#6#413#0#PHP" expanded="true" />
+            <element signature="n#inject_check#0;n#!!top" />
+            <element signature="n#GetIP#0;n#!!top" />
+            <element signature="n#IP#0;n#!!top" />
+            <element signature="n#cloud#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="288" column="22" lean-forward="true" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
+        <state relative-caret-position="388">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
-            <element signature="n#t#0;n#!!top" />
-            <element signature="n#get_info#0;n#!!top" />
+            <element signature="e#6#412#0#PHP" expanded="true" />
+            <element signature="n#message#0;n#!!top" />
             <element signature="n#get_school_name_by_school_num#0;n#!!top" />
             <element signature="n#get_school_name_by_user_name#0;n#!!top" />
             <element signature="n#get_newest_test#0;n#!!top" />
@@ -532,89 +599,16 @@
             <element signature="e#4396#4459#0#PHP" />
             <element signature="n#get_res_long_run#0;n#!!top" />
             <element signature="n#get_res_choose#0;n#!!top" />
-            <element signature="e#16382#17203#0#PHP" />
+            <element signature="n#get_choose_name#0;n#!!top" />
+            <element signature="n#test_insert#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/log_check.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/verb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="e#6#413#0#PHP" expanded="true" />
-            <element signature="n#inject_check#0;n#!!top" />
-            <element signature="n#GetIP#0;n#!!top" />
-            <element signature="n#IP#0;n#!!top" />
-            <element signature="n#cloud#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
-          <folding>
-            <element signature="e#6#412#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/mdui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8316">
-          <caret line="6419" column="22" selection-start-line="6419" selection-start-column="20" selection-end-line="6419" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/spawn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/info_check.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/info.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/pwd.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="98" column="10" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="98" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#2082#2766#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/pwd_check.php">
+    <entry file="file://$PROJECT_DIR$/app/class_mem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+          <caret line="40" column="117" lean-forward="true" selection-start-line="40" selection-start-column="117" selection-end-line="40" selection-end-column="132" />
         </state>
       </provider>
     </entry>

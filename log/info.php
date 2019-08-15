@@ -16,7 +16,6 @@
 session_start();
 $location="../";
 $title="完善您的信息";
-include_once "../db.php";
 include_once "../functions.php";
 include_once "../functions_layout.php";
 include_once "../hearder.php";

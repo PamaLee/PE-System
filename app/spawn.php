@@ -14,6 +14,8 @@
  * 所屬項目名稱：PE-System
  */
 ini_set("max_execution_time", "1800");
+$location="../";
+
 ?>
 <div class="mdui-row">
     <div style="padding-top: 30px">

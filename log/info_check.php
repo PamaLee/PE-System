@@ -13,8 +13,8 @@
  * 創建時間：下午2:46
  * 所屬項目名稱：PE-System
  */
-
-include "../db.php";
+$location="../";
+include "../functions.php";
 session_start();
 if (!isset($_GET['high']) or !isset($_GET['weight'])){
     echo "false";

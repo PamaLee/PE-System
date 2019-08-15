@@ -16,7 +16,6 @@
 $location="./";
 include_once "functions.php";
 include_once "./verb.php";
-include_once "db.php";
 $title="主页";
 include "./hearder.php";
 include "./functions_layout.php";
@@ -31,7 +30,9 @@ top_menu($title);
                 ?>
             </div>
     <div id="tab2">
-
+        <?php
+        include_once "app/class_mem.php";
+        ?>
     </div>
 
 

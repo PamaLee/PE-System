@@ -13,16 +13,28 @@
  * 創建時間：上午8:23
  * 所屬項目名稱：PE-System
  */
-include $localtion."/db.php";
+
+
+include $location."db.php";
 
 /**
  * @param string $message
  * @param string $localtion
  */
 function t($message="未指定",$localtion="./"){
-    echo "<script language='JavaScript'>alert('$message');location.href='$localtion'</script>;";
+    echo "<script language='JavaScript'>alert('$message');location.href='$localtion'</script>";
 }
 
+function message($message,$p="top",$timeout="1000"){
+    echo "
+    <script language='JavaScript'>mdui.snackbar({
+                closeOnOutsideClick: false,
+                timeout: ".$timeout.",
+                message: '".$message."',
+                position: '".$p."'
+            });
+            </script>";
+}
 /**
  * @param $name
  * @return array
@@ -30,6 +42,7 @@ function t($message="未指定",$localtion="./"){
 function get_info($name){
     $info=link_admin()->query("select * from student where name='$name'")->fetch_array();
     $class=$info['class'];
+    $study_hao=$info['study_hao'];
     $grade=$info['grade'];
     $school=$info['school'];
     $test_num=$info['test_num'];
@@ -37,7 +50,7 @@ function get_info($name){
     $sex=$info['sex'];
     $high=$info['high'];
     $weight=$info['weight'];
-    $res=array("class"=>$class,"grade"=>$grade,"school"=>$school,"test_num"=>$test_num,"uid"=>$uid,"sex"=>$sex,"high"=>$high,"weight"=>$weight);
+    $res=array("class"=>$class,"grade"=>$grade,"school"=>$school,"study_hao"=>$study_hao,"test_num"=>$test_num,"uid"=>$uid,"sex"=>$sex,"high"=>$high,"weight"=>$weight);
     return $res;
 }
 
@@ -560,26 +573,71 @@ function get_res_choose($sex,$choose,$fen){
     }
 }
 
-function test_insert_student($num,$school){
+function get_choose_name($choose_what){
+    if ($choose_what==1){
+        return "实心球";
+    }
+    if($choose_what==2) {
+        return "立定跳远";
+    }
+    if($choose_what==3){
+        return "仰卧起坐";
+    }
+    if ($choose_what==4){
+        return "跳绳";
+    }
+    if ($choose_what==5){
+        return "引体向上";
+    }
+}
+
+function test_insert($num,$school,$class,$test_num){
+    $choose_man=array(1,2,4,5);
+    $choose_woman=array(1,2,3,4);
     for ($i=0;$i<$num;$i++){
-        $class=rand(1,10);
         $grade=9;
         $name=rand(100,999);
         $uid=rand(1000000,9999999);
         $pwd=rand(100000000,99999999999);
         $sex=rand(0,1);
-        $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
-        if($uid_isset>0){
-            $uid=rand(1000000,9999999);
-            $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
-            if ($uid_isset>0){
-                $uid=rand(1000000,9999999);
-                $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
-            }
+        $long_run_sc=rand(3.22,4.34);
+        $short_run_sc=rand(6.9,9.2);
+        $short_run_res=get_res_short_run($sex,$short_run_sc);
+        $long_run_res=get_res_long_run($sex,$long_run_sc);
+        if ($sex==0){
+            $choose_what=array_rand($choose_woman,1);
+            $choose_what=$choose_woman[$choose_what];
+        }else{
+            $choose_what=array_rand($choose_man,1);
+            $choose_what=$choose_man[$choose_what];
         }
-        link_admin()->query("INSERT INTO student (uid, name, grade, class, pwd, school, sex) values ('$uid','$name','$grade','$class','$pwd','$school','$sex')");
+        if ($choose_what==1){
+            $choose_res=rand(4.3,12.1);
+            $choose_res_what=get_res_choose($sex,$choose_what,$choose_res);
+        }elseif ($choose_what==2){
+            $choose_res=rand(1.43,2.44);
+            $choose_res_what=get_res_choose($sex,$choose_what,$choose_res);
+        }elseif ($choose_what==3){
+            $choose_res=rand(10,60);
+            $choose_res_what=get_res_choose($sex,$choose_what,$choose_res);
+        }elseif ($choose_what==4){
+            $choose_res=rand(60,190);
+            $choose_res_what=get_res_choose($sex,$choose_what,$choose_res);
+        }elseif ($choose_what==5){
+            $choose_res=rand(1,15);
+            $choose_res_what=get_res_choose($sex,$choose_what,$choose_res);
+        }
+        $zong=$short_run_res+$choose_res_what+$long_run_res;
+        $study_hao=rand(1,50);
+        $sql=link_admin()->query("INSERT INTO student (uid,study_hao, name, grade, class, pwd, school, sex) values ('$uid','$study_hao','$name','$grade','$class','$pwd','$school','$sex')");
+        $sql2=link_admin()->query("insert into test_res(school, name, test_num, long_run_res, short_run_res, choose_res, long_run_sc, short_run_sc, choose_sc, choose_what, zong_res, sex)values ('$school','$name','$test_num','$long_run_sc','$short_run_sc','$choose_res','$long_run_res','$short_run_res','$choose_res_what','$choose_what','$zong','$sex')");
+        if ($sql and $sql2){
+            echo "12312312312";
+        }else{
+            echo link_admin()->error;
+        }
     }
-    return true;
+
 }
 
 

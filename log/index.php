@@ -18,7 +18,6 @@ session_start();
 $title="用户登录";
 $location="../";
 include_once "../hearder.php";
-include_once "../db.php";
 include "../functions.php";
 if (isset($_GET['c'])){
     if ($_GET['c']=="loginout"){

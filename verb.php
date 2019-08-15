@@ -15,7 +15,7 @@
  */
 //验证文件
 session_start();
-include_once "db.php";
+include_once "functions.php";
 $username=$_SESSION['username'];
 //验证登录
 if (!isset($username)){

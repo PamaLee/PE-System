@@ -13,8 +13,8 @@
  * 創建時間：下午1:12
  * 所屬項目名稱：PE-System
  */
-
-include_once "../db.php";
+$location="../";
+include_once "../functions.php";
 session_start();
 if (!isset($_GET['pwd'],$_GET['repwd'])){
     echo 'false';

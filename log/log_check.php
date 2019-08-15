@@ -13,7 +13,7 @@
  * 創建時間：上午9:01
  * 所屬項目名稱：PE-System
  */
-
+$location="../";
 session_start();
 sleep(1);
 if (!isset($_GET['username'])){
@@ -23,7 +23,7 @@ if (!isset($_GET['username'])){
     $pwd=$_GET['pwd'];
     $who=$_GET['who'];
     $school=$_GET['school'];
-    include "../db.php";
+    include "../functions.php";
     if($who=='student'){
         $schools=link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num=link_admin()->query("select * from student where school='$schools' and  name='$username' and pwd='$pwd'")->num_rows;

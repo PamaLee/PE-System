@@ -14,8 +14,8 @@
  * 所屬項目名稱：PE-System
  */
 
-sleep(2);
 session_start();
+sleep(1);
 if (!isset($_GET['username'])){
     return false;
 }else{
@@ -28,11 +28,29 @@ if (!isset($_GET['username'])){
         $schools=link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num=link_admin()->query("select * from student where school='$schools' and  name='$username' and pwd='$pwd'")->num_rows;
         if ($num>0){
-            echo "true";
-            $_SESSION['username']=$username;
-            $_SESSION['who']="student";
-            return true;
+            $info=link_admin()->query("select * from student where school='$schools' and name='$username'")->fetch_array();
+            $first_login=$info['first_time_login'];
+            if ($first_login==0){
+                $_SESSION['username_check']=$username;
+                $_SESSION['who_check']="student";
+                $_SESSION['school_check']=$schools;
+                $last_login=date("Y-m-d H:i:s");
+                link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
+                link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");
+                echo "topwd";
+                return true;
+            }else{
+                $_SESSION['username']=$username;
+                $_SESSION['who']="student";
+                $_SESSION['school']=$schools;
+                $last_login=date("Y-m-d H:i:s");
+                link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
+                link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");
+                echo "tospawn";
+                return true;
+            }
         }else{
+            echo "false";
             return false;
         }
     }elseif($who=="teacher"){

@@ -560,7 +560,27 @@ function get_res_choose($sex,$choose,$fen){
     }
 }
 
-
+function test_insert_student($num,$school){
+    for ($i=0;$i<$num;$i++){
+        $class=rand(1,10);
+        $grade=9;
+        $name=rand(100,999);
+        $uid=rand(1000000,9999999);
+        $pwd=rand(100000000,99999999999);
+        $sex=rand(0,1);
+        $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
+        if($uid_isset>0){
+            $uid=rand(1000000,9999999);
+            $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
+            if ($uid_isset>0){
+                $uid=rand(1000000,9999999);
+                $uid_isset=link_admin()->query("select * from student where uid='$uid'")->num_rows;
+            }
+        }
+        link_admin()->query("INSERT INTO student (uid, name, grade, class, pwd, school, sex) values ('$uid','$name','$grade','$class','$pwd','$school','$sex')");
+    }
+    return true;
+}
 
 
 

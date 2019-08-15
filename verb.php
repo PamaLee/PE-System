@@ -15,10 +15,27 @@
  */
 //验证文件
 session_start();
+include_once "db.php";
 $username=$_SESSION['username'];
 //验证登录
 if (!isset($username)){
     header("Location:".$location."log/");//跳转到登录界面
+    exit();
+}
+$username=$_SESSION['username'];
+$schools=$_SESSION['school'];
+$first_time=link_admin()->query("SELECT * from student where name='$username' and school='$schools'")->fetch_array()['first_time_login'];
+if ($first_time==0){
+    header("Location:./log/pwd.php");
+    exit();
+}
+
+
+$high_weight=link_admin()->query("Select * From student where name='$username' and school='$schools'")->fetch_array();
+$high=$high_weight['high'];
+$weight=$high_weight['weight'];
+if (empty($high) or empty($weight)){
+    header("Location: ./log/info.php");
     exit();
 }
 

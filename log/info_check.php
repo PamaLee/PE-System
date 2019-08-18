@@ -15,6 +15,7 @@
  */
 $location="../";
 include "../functions.php";
+include_once "verb.php";
 session_start();
 if (!isset($_GET['high']) or !isset($_GET['weight'])){
     echo "false";
@@ -24,7 +25,8 @@ if (!isset($_GET['high']) or !isset($_GET['weight'])){
     $school=$_SESSION['school'];
     $high=$_GET['high'];
     $weight=$_GET['weight'];
-    $sql=link_admin()->query("update student set high='$high', weight='$weight' where name='$name' and school='$school'");
+    $choose=$_GET['choose'];
+    $sql=link_admin()->query("update student set high='$high', weight='$weight' ,choose_what='$choose' where name='$name' and school='$school'");
     if ($sql){
         echo "true";
         return true;

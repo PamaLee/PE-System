@@ -19,9 +19,9 @@
 -->
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?php echo $location ?>public/css/mdui.css">
-    <script src="<?php echo $location ?>public/js/mdui.js"></script>
-    <script src="<?php echo $location ?>public/js/jq.js"></script>
+    <link rel="stylesheet" href="<? echo $location?>/public/css/mdui.css">
+    <script src="<? echo $location?>/public/js/mdui.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
    <style>
        @font-face {
            font-family: 'Number';   /*字体名称*/

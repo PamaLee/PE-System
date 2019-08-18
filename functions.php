@@ -25,6 +25,11 @@ function t($message="未指定",$localtion="./"){
     echo "<script language='JavaScript'>alert('$message');location.href='$localtion'</script>";
 }
 
+/**
+ * @param $message
+ * @param string $p
+ * @param string $timeout
+ */
 function message($message,$p="top",$timeout="1000"){
     echo "
     <script language='JavaScript'>mdui.snackbar({
@@ -39,8 +44,8 @@ function message($message,$p="top",$timeout="1000"){
  * @param $name
  * @return array
  */
-function get_info($name){
-    $info=link_admin()->query("select * from student where name='$name'")->fetch_array();
+function get_info($school,$name){
+    $info=link_admin()->query("select * from student where name='$name' and school='$school'")->fetch_array();
     $class=$info['class'];
     $study_hao=$info['study_hao'];
     $grade=$info['grade'];
@@ -51,7 +56,7 @@ function get_info($name){
     $high=$info['high'];
     $weight=$info['weight'];
     $res=array("class"=>$class,"grade"=>$grade,"school"=>$school,"study_hao"=>$study_hao,"test_num"=>$test_num,"uid"=>$uid,"sex"=>$sex,"high"=>$high,"weight"=>$weight);
-    return $res;
+    return $info;
 }
 
 /**
@@ -93,14 +98,46 @@ function get_newest_test($school_num){
                 }
             }
         }
-        $id=link_admin()->query("select * from test_name where date='$bi'")->fetch_array()['id'];
+        $id=link_admin()->query("select * from test_name where date='$bi'")->fetch_array()['num'];
+        return $id;
+    }elseif($num==1){
+        $id=link_admin()->query("select * from test_name where school='$school_num'")->fetch_array()['num'];
         return $id;
     }else{
-        $id=link_admin()->query("select * from test_name where school='$school_num'")->fetch_array()['id'];
-        return $id;
+        return false;
     }
 
 
+}
+
+function get_test_res($school,$name,$test_num){
+    $info=link_admin()->query("select * from test_res where school='$school' and name='$name' and test_num='$test_num'")->fetch_array();
+    return $info;
+}
+
+function fen_to_beautiful($choose_what,$fen){
+    if ($choose_what=="50米"){
+        return $fen."秒";
+    }
+    if ($choose_what=="长跑"){
+        $str=explode(".",$fen);
+        return $str[0]."分".$str['1']."秒";
+    }
+    if ($choose_what=="实心球"){
+        return $fen."米";
+    }
+    if ($choose_what=="立定跳远"){
+        return $fen."米";
+    }
+    if ($choose_what=="引体向上"){
+        return $fen."个";
+    }
+    if ($choose_what=="仰卧起坐"){
+        return $fen."个";
+    }
+    if ($choose_what=="跳绳"){
+        return $fen."个";
+    }
 }
 
 function get_test_info($school,$test){
@@ -591,6 +628,20 @@ function get_choose_name($choose_what){
     }
 }
 
+function study_hao($num,$class,$school,$study_hao){
+    $nums=link_admin()->query("select * from student where class='$class' and school='$school' and study_hao='$study_hao'")->num_rows;
+    if ($nums>0){
+        $study_hao1=rand(1,$num);
+        study_hao($num,$class,$school,$study_hao1);
+    }
+    else{
+        if (isset($study_hao1)){
+            $study_hao=$study_hao1;
+        }
+        return $study_hao;
+    }
+}
+
 function test_insert($num,$school,$class,$test_num){
     $choose_man=array(1,2,4,5);
     $choose_woman=array(1,2,3,4);
@@ -604,6 +655,9 @@ function test_insert($num,$school,$class,$test_num){
         $short_run_sc=rand(6.9,9.2);
         $short_run_res=get_res_short_run($sex,$short_run_sc);
         $long_run_res=get_res_long_run($sex,$long_run_sc);
+
+        $study_hao=rand(1,$num);
+        $study_haos=study_hao($num,$class,$school,$study_hao);
         if ($sex==0){
             $choose_what=array_rand($choose_woman,1);
             $choose_what=$choose_woman[$choose_what];
@@ -629,10 +683,10 @@ function test_insert($num,$school,$class,$test_num){
         }
         $zong=$short_run_res+$choose_res_what+$long_run_res;
         $study_hao=rand(1,50);
-        $sql=link_admin()->query("INSERT INTO student (uid,study_hao, name, grade, class, pwd, school, sex) values ('$uid','$study_hao','$name','$grade','$class','$pwd','$school','$sex')");
-        $sql2=link_admin()->query("insert into test_res(school, name, test_num, long_run_res, short_run_res, choose_res, long_run_sc, short_run_sc, choose_sc, choose_what, zong_res, sex)values ('$school','$name','$test_num','$long_run_sc','$short_run_sc','$choose_res','$long_run_res','$short_run_res','$choose_res_what','$choose_what','$zong','$sex')");
+        $sql=link_admin()->query("INSERT INTO student (uid,study_hao, name, grade, class, pwd, school, sex) values ('$uid','$study_haos','$name','$grade','$class','$pwd','$school','$sex')");
+        $sql2=link_admin()->query("insert into test_res(school, name,study_hao, test_num, long_run_res, short_run_res, choose_res, long_run_sc, short_run_sc, choose_sc, choose_what, zong_res, sex)values ('$school','$name','$study_haos','$test_num','$long_run_sc','$short_run_sc','$choose_res','$long_run_res','$short_run_res','$choose_res_what','$choose_what','$zong','$sex')");
         if ($sql and $sql2){
-            echo "12312312312";
+            echo "完成";
         }else{
             echo link_admin()->error;
         }

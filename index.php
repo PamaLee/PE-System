@@ -13,6 +13,11 @@
  * 創建時間：上午8:23
  * 所屬項目名稱：PE-System
  */
+error_reporting(0);
+//报告运行时错误
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//报告所有错误
+error_reporting(E_ALL);
 $location="./";
 include_once "functions.php";
 include_once "./verb.php";
@@ -24,18 +29,18 @@ include "./functions_layout.php";
 top_menu($title);
 ?>
 <div class="mdui-container">
-    <div id="tab1">
-                <?php
-                include_once "app/spawn.php";
-                ?>
-            </div>
-    <div id="tab2">
-        <?php
-        include_once "app/class_mem.php";
-        ?>
-    </div>
 
-
+        <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
+            <?php
+            include_once "app/spawn.php";
+            ?>
+        </div>
+</div>
+        <div id="tab2">
+            <?php
+            include_once "app/class_mem.php";
+            ?>
+        </div>
 
 </div>
 
@@ -48,19 +53,6 @@ top_menu($title);
         <i class="mdui-icon material-icons">contact_phone</i>
         <label>班级</label>
     </a>
-    <a href="#tab3" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">shop</i>
-        <label>帮助</label>
-    </a>
-    <a href="#tab4" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">backup</i>
-        <label>库存</label>
-    </a>
-    <a href="#tab5" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">backup</i>
-        <label>库存</label>
-    </a>
+
 </div>
 
-</body>
-</html>

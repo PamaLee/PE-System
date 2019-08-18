@@ -9678,8 +9678,8 @@ select.mdui-select[multiple] option:last-child {
 /* 卡片头部头像 */
 .mdui-card-header-avatar {
   float: left;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 /* 卡片头部标题 */

@@ -19,6 +19,7 @@ $title="用户登录";
 $location="../";
 include_once "../hearder.php";
 include "../functions.php";
+include_once "verb.php";
 if (isset($_GET['c'])){
     if ($_GET['c']=="loginout"){
         session_unset();
@@ -42,6 +43,7 @@ if (isset($_SESSION['username_check']) or isset($_SESSION['school_check'])){
 }
 include "../functions_layout.php";
 top_menu($title);
+
 ?>
 
 <div class="mdui-container ">
@@ -172,6 +174,9 @@ top_menu($title);
             url: "log_check.php",
             data: "username="+username+"&pwd="+pwd+"&school="+vals+"&who="+get_radio("who"),
             success: function (data) {
+                if (data.indexOf("服务端出现错误") !=-1){
+                    document.write("<h1>"+data+"</h1>");
+                   }
                 switch (data) {
                     case "tospawn":
                         $$("#submit").text("登陆成功！欢迎回来："+username+"，正在为您跳转，请稍后...");

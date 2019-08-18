@@ -15,6 +15,8 @@
  */
 $location="../";
 session_start();
+include "../functions.php";
+include_once "verb.php";
 sleep(1);
 if (!isset($_GET['username'])){
     return false;
@@ -23,7 +25,6 @@ if (!isset($_GET['username'])){
     $pwd=$_GET['pwd'];
     $who=$_GET['who'];
     $school=$_GET['school'];
-    include "../functions.php";
     if($who=='student'){
         $schools=link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num=link_admin()->query("select * from student where school='$schools' and  name='$username' and pwd='$pwd'")->num_rows;
@@ -34,6 +35,7 @@ if (!isset($_GET['username'])){
                 $_SESSION['username_check']=$username;
                 $_SESSION['who_check']="student";
                 $_SESSION['school_check']=$schools;
+                $_SESSION['info']=get_info($schools,$username);
                 $last_login=date("Y-m-d H:i:s");
                 link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
                 link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");
@@ -43,6 +45,7 @@ if (!isset($_GET['username'])){
                 $_SESSION['username']=$username;
                 $_SESSION['who']="student";
                 $_SESSION['school']=$schools;
+                $_SESSION['info']=get_info($schools,$username);
                 $last_login=date("Y-m-d H:i:s");
                 link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
                 link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");

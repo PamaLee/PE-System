@@ -15,8 +15,10 @@
  */
 session_start();
 $location="../";
+
 $title="完善您的信息";
 include_once "../functions.php";
+include_once "verb.php";
 include_once "../functions_layout.php";
 include_once "../hearder.php";
 
@@ -47,12 +49,42 @@ top_menu("完善您的信息")
             <label class="mdui-textfield-label">您的体重（千克）</label>
             <input class="mdui-textfield-input" type="number" name="weight" id="weight" value="<?php echo $weight?>"/>
         </div>
-        <div class="mdui-text-center" id="check" style="display: none; color: red">两次输入的密码不同!</div>
+        <div class="mdui-row">
+            考试选项：<select class="mdui-select" name="choose" id="choose" mdui-select="{position: 'bottom'}">
+                <?php
+                if ($_SESSION['info']['sex']==0){
+                    echo "<option value=\"1\">实心球</option>
+                <option value=\"2\">立定跳远</option>
+                <option value=\"3\">仰卧起坐</option>
+                <option value=\"4\">跳绳</option>";
+                }
+                if($_SESSION['info']['sex']==1){
+                    echo "<option value=\"1\">实心球</option>
+                <option value=\"2\">立定跳远</option>
+                <option value=\"4\">跳绳</option>
+                <option value=\"5\">引体向上</option>";
+                }
+
+                ?>
+            </select>
+        </div>
+
         <button class="mdui-btn  mdui-color-theme-accent mdui-ripple" id="submit" onclick="check();info();">完成</button>
     </div>
 </div>
 
 <script>
+    function get_radio(name) {
+        var item = null;
+        var obj = document.getElementsByName(name);
+        for (var i = 0; i < obj.length; i++) { //遍历Radio
+            if (obj[i].checked) {
+                item = obj[i].value;
+            }
+        }
+        return item;
+    }
+
     function check() {
         var high = document.getElementById("high").value;
         var weight = document.getElementById("weight").value;
@@ -79,6 +111,7 @@ top_menu("完善您的信息")
 
 
     function info() {
+        var vals = document.getElementById("choose").value;
         var high=$('#high').val();
         var weight=$('#weight').val();
         $.ajax({
@@ -88,7 +121,7 @@ top_menu("完善您的信息")
                 echo $_SESSION['username'];
                 ?>&high="+high+"&school=<?php
                 echo $_SESSION['school'];
-                ?>&weight="+weight,
+                ?>&weight="+weight+"&choose="+vals,
             success: function (data) {
                 if (data){
                     $("#submit").text("完善成功，正在为您跳转，请稍后...");

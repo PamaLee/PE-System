@@ -14,8 +14,11 @@
  * 所屬項目名稱：PE-System
  */
 $location="../";
+
 include_once "../functions.php";
+include_once "verb.php";
 session_start();
+include_once "verb.php";
 if (!isset($_GET['pwd'],$_GET['repwd'])){
     echo 'false';
     return false;
@@ -38,6 +41,7 @@ if (!isset($_GET['pwd'],$_GET['repwd'])){
             session_start();
             $_SESSION['username']=$name;
             $_SESSION['school']=$school;
+            $_SESSION['info']=get_info($school,$name);
             $_SESSION['who']="student";
             echo "true";
             return true;

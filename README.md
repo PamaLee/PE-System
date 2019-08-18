@@ -25,8 +25,7 @@
 ```
 开发者：Pama Richard 
 
-<img src="https://github.com/PamaRichard/PE-System/blob/master/photos/2.png" width="300">
-<img src="https://github.com/PamaRichard/PE-System/blob/master/photos/logo.png" width="500">
+<img src="https://github.com/PamaRichard/PE-System/blob/master/photos/2.png" width="300"><img src="https://github.com/PamaRichard/PE-System/blob/master/photos/logo.png" width="500">
 感谢以下开源项目对本项目的支持：
 > * MDUI
 > * Jquery

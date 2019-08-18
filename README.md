@@ -11,7 +11,7 @@
 > * 按照需求自动生成下次测试的考试分组名单，简单便捷
 > * 学生端，家长端，教师端合为一体，进行大量自定义操作。
 
-<img src="https://github.com/PamaRichard/PE-System/blob/master/photos/体育成绩策划.png">
+![in](https://github.com/PamaRichard/PE-System/blob/master/photos/体育成绩策划.png)
 
 ```
 /**

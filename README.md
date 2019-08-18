@@ -25,10 +25,9 @@
 ```
 开发者：Pama Richard 
 
-<img src="http://i1.fuimg.com/629849/e7e5e73969fe3621.png" width="300"><img src="http://i2.tiimg.com/629849/ff73e8322101a8d2.png" width="500">
+<img src="http://i1.fuimg.com/629849/e7e5e73969fe3621.png" width="300">
+<img src="https://imgchr.com/i/mQ6501" width="500">
 感谢以下开源项目对本项目的支持：
 > * MDUI
 > * Jquery
-
-
 ------

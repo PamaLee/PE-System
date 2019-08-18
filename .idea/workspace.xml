@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="108d169b-c5b9-4d57-8a58-4bbe5dafb56e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/log/verb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/class_mem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/class_mem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/spawn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/spawn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions_layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions_layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hearder.php" beforeDir="false" afterPath="$PROJECT_DIR$/hearder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/log_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/log_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/pwd.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/pwd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/pwd_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/pwd_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/mdui.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/mdui.css" afterDir="false" />
-    </list>
+    <list default="true" id="108d169b-c5b9-4d57-8a58-4bbe5dafb56e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            <state relative-caret-position="28">
+              <caret line="1" selection-start-line="1" selection-end-line="10" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -254,16 +237,6 @@
             <path>
               <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
               <item name="PE-System" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PE-System" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PE-System" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -323,16 +296,15 @@
       <workItem from="1566046732296" duration="309000" />
       <workItem from="1566050566951" duration="177000" />
       <workItem from="1566090800532" duration="3528000" />
-      <workItem from="1566110243579" duration="1895000" />
+      <workItem from="1566110243579" duration="2483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41301000" />
+    <option name="totallyTimeSpent" value="41889000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="22" width="1920" height="1058" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977778" visible="true" weight="0.17324094" />
       <window_info id="Structure" order="1" sideWeight="0.5011111" side_tool="true" weight="0.035676252" />
@@ -564,8 +536,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="28">
+          <caret line="1" selection-start-line="1" selection-end-line="10" selection-end-column="2" />
         </state>
       </provider>
     </entry>

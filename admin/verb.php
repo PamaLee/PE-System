@@ -1,6 +1,6 @@
 <?php
 /**
- *  ___                      ___  _      _                   _
+ * ___                      ___  _      _                   _
  * | _ \ __ _  _ __   __ _  | _ \(_) __ | |_   __ _  _ _  __| |
  * |  _// _` || '  \ / _` | |   /| |/ _|| ' \ / _` || '_|/ _` |
  * |_|  \__,_||_|_|_|\__,_| |_|_\|_|\__||_||_|\__,_||_|  \__,_|
@@ -10,34 +10,17 @@
  * 如果遇到問題，請使用郵箱聯繫
  *
  * //======關於這個文件=======
- * 創建時間：上午8:23
+ * 創建時間：上午7:02
  * 所屬項目名稱：PE-System
  */
-//验证文件
+
 session_start();
-include_once "functions.php";
-$username=$_SESSION['username'];
-//验证登录
-if (!isset($username)){
-    header("Location:".$location."log/");//跳转到登录界面
-    exit();
-}
-$username=$_SESSION['username'];
-$schools=$_SESSION['school'];
-$first_time=link_admin()->query("SELECT * from student where name='$username' and school='$schools'")->fetch_array()['first_time_login'];
-if ($first_time==0){
-    header("Location:./log/pwd.php");
-    exit();
+if (!isset($_SESSION['who']) and !isset($_SESSION['username']) and $_SESSION['who']!="admin"){
+    session_unset();
+    session_destroy();
+    header("Location: ../index.php");
 }
 
-
-$high_weight=link_admin()->query("Select * From student where name='$username' and school='$schools'")->fetch_array();
-$high=$high_weight['high'];
-$weight=$high_weight['weight'];
-if (empty($high) or empty($weight)){
-    header("Location: ./log/info.php");
-    exit();
-}
 
 check_IP(GetIP());
 check_user($_SESSION['username']);

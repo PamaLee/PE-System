@@ -71,6 +71,8 @@ include_once "../functions.php";
                         <?php
                              if ($test==false){
                                  echo "当前暂无任何测试成绩";
+                                 echo "</div></div></div></div></div></div>";
+                                 return;
                              }else{
                                  echo $zong_res;
                              }
@@ -85,8 +87,11 @@ include_once "../functions.php";
                 $school=$_SESSION['school'];
                 $test_num=get_newest_test($school);
                 $num=link_admin()->query("select * from test_res where name='$name' and school='$school' and test_num='$test_num'")->num_rows;
+                $info=link_admin()->query("select * from test_name where school='$school' and num='$test_num'")->fetch_array()['name'];
                 if ($num==0){
-                    echo "<div class='mdui-text-center' style='font-size: 30px'>暂无最新考试信息</div>";
+                    echo "<div class='mdui-text-center mdui-color-theme' style='font-size: 25px'>$info</div>";
+                    echo "<div class='mdui-text-center mdui-color-pink' style='font-size: 25px'>暂无您最新的考试信息,请等待成绩公布</div></div></div></div>";
+                    return;
                 }
 
                 ?>

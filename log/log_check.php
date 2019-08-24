@@ -67,6 +67,17 @@ if (!isset($_GET['username'])){
         }else{
             return false;
         }
+        }elseif($who=="admin"){
+        $schools=link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
+        $num=link_admin()->query("select * from admin where school='$schools' and name='$username' and pwd='$pwd'")->num_rows;
+        if ($num>0){
+            $info=link_admin()->query("select * from admin where school='$schools' and name='$username'")->fetch_array();
+            echo "toadmin";
+            $_SESSION['username'];
+            $_SESSION['who']="admin";
+            $_SESSION['info']=$info;
+            return true;
         }
+    }
     }
 

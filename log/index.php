@@ -30,7 +30,7 @@ if (isset($_GET['c'])){
 }
 
 if (isset($_SESSION['username']) or isset($_SESSION['who'])){
-    t("您已经登录了！",'../');
+    t("您已经登录了！",'../index.php');
     exit();
 }
 
@@ -47,7 +47,7 @@ top_menu($title);
 ?>
 
 <div class="mdui-container ">
-    <div class="mdui-col-md-6 mdui-col-offset-md-3">
+    <div class="mdui-col-md-6 mdui-col-offset-md-3" style="padding-top: 75px">
 
         <h1 style="text-align: center">请您登录</h1>
         <h4 style="text-align: center">当前日期:<?php echo date("Y-m-d")?></h4>
@@ -69,11 +69,15 @@ top_menu($title);
                 <i class="mdui-radio-icon"></i>
                 教师登陆
             </label>
-
             <label class="mdui-radio">
                 <input type="radio" name="who" value="student" checked/>
                 <i class="mdui-radio-icon"></i>
                 学生登陆
+            </label>
+            <label class="mdui-radio">
+                <input type="radio" name="who" value="admin"/>
+                <i class="mdui-radio-icon"></i>
+                管理员登陆
             </label>
             <div class="mdui-textfield mdui-textfield-floating-label" onclick="username()">
                 <i class="mdui-icon material-icons">account_box</i>
@@ -185,6 +189,10 @@ top_menu($title);
                     case "topwd":
                         $$("#submit").text("登陆成功！欢迎回来："+username+"，正在为您跳转，请稍后...");
                         setTimeout("window.location.href = \"./pwd.php\"",1000);
+                        break;
+                    case "toadmin":
+                        $$("#submit").text("登陆成功！欢迎回来："+username+"，正在为您跳转，请稍后...");
+                        setTimeout("window.location.href = \"../admin/index.php\"",1000);
                         break;
                     default:
                         pwd_error();

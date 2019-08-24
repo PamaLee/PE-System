@@ -41,4 +41,4 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>体育系统——<?php echo $title ?></title>
 </head>
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixed">
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixe mdui-drawer-body-left">

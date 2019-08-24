@@ -695,6 +695,51 @@ function test_insert($num,$school,$class,$test_num){
 }
 
 
+/**
+ * @param $sex
+ * @param $height
+ * @return float
+ * 通过身高求出标准体重
+ */
+function math_height_to_weight($sex,$height)
+{
+    if ($sex==1){
+        $weight_to=$height-100;
+        $weight=$weight_to*0.9;
+        return $weight;
+    }
+    if($sex==0){
+        $weight_to=$height-100;
+        $weight=$weight_to*0.9-2.5;
+        return $weight;
+    }
+
+}
+
+function get_second_test($school){
+    $test_all=link_admin()->query("select * from test_name where school='$school' order by date DESC ");
+    if ($test_all->num_rows>1){
+        return $test_all->fetch_all()[1];
+    }else{
+        return false;
+    }
+}
+
+function get_student_num($school,$grade){
+    $num=link_admin()->query("SELECT * FROM student where school='$school' and grade='$grade'")->num_rows;
+    return $num;
+}
+function get_teacher_num($school,$grade){
+    $num=link_admin()->query("SELECT * FROM teacher where school='$school' and grade='$grade'")->num_rows;
+    return $num;
+}
+function get_test_num($school,$grade){
+    $num=link_admin()->query("SELECT * FROM test_name where school='$school' and grade='$grade'")->num_rows;
+    return $num;
+}
+
+
+
 
 
 

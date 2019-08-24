@@ -42,6 +42,13 @@ top_menu($title);
             ?>
         </div>
 
+
+        <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab3">
+            <?
+            include_once "app/res_study.php";
+            ?>
+        </div>
+
 </div>
 
 <div class=" mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-indigo mdui-tab" mdui-tab>
@@ -52,6 +59,10 @@ top_menu($title);
     <a href="#tab2" class="mdui-ripple mdui-ripple-white">
         <i class="mdui-icon material-icons">contact_phone</i>
         <label>班级</label>
+    </a>
+    <a href="#tab3" class="mdui-ripple mdui-ripple-white">
+        <i class="mdui-icon material-icons">chrome_reader_mode</i>
+        <label>成绩分析</label>
     </a>
 
 </div>

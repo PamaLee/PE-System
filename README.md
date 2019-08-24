@@ -11,9 +11,11 @@
 > * 按照需求自动生成下次测试的考试分组名单，简单便捷
 > * 学生端，家长端，教师端合为一体，进行大量自定义操作。
 
+![in](https://github.com/PamaRichard/PE-System/blob/master/photos/体育成绩策划.png)
+
 ```
 /**
- * ___                      ___  _      _                   _
+ *  ___                      ___  _      _                   _
  * | _ \ __ _  _ __   __ _  | _ \(_) __ | |_   __ _  _ _  __| |
  * |  _// _` || '  \ / _` | |   /| |/ _|| ' \ / _` || '_|/ _` |
  * |_|  \__,_||_|_|_|\__,_| |_|_\|_|\__||_||_|\__,_||_|  \__,_|
@@ -25,8 +27,8 @@
 ```
 开发者：Pama Richard 
 
-<img src="http://i1.fuimg.com/629849/e7e5e73969fe3621.png" width="300">
-<img src="https://imgchr.com/i/mQ6501" width="500">
+<img src="https://github.com/PamaRichard/PE-System/blob/master/photos/2.png" width="300"><img src="https://github.com/PamaRichard/PE-System/blob/master/photos/logo.png" width="500">
+
 感谢以下开源项目对本项目的支持：
 > * MDUI
 > * Jquery

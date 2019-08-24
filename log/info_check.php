@@ -13,28 +13,28 @@
  * 創建時間：下午2:46
  * 所屬項目名稱：PE-System
  */
-$location="../";
+$location = "../";
 include "../functions.php";
 include_once "verb.php";
 session_start();
-if (!isset($_GET['high']) or !isset($_GET['weight'])){
+if (!isset($_GET['high']) or !isset($_GET['weight'])) {
     echo "false";
     return false;
-}else{
-    $name=$_SESSION['username'];
-    $school=$_SESSION['school'];
-    $high=$_GET['high'];
-    $weight=$_GET['weight'];
-    $choose=$_GET['choose'];
-    if(!is_numeric($weight) or !is_numeric($high)){
+} else {
+    $name = $_SESSION['username'];
+    $school = $_SESSION['school'];
+    $high = $_GET['high'];
+    $weight = $_GET['weight'];
+    $choose = $_GET['choose'];
+    if (!is_numeric($weight) or !is_numeric($high)) {
         echo "false";
         return false;
     }
-    $sql=link_admin()->query("update student set high='$high', weight='$weight' ,choose_what='$choose' where name='$name' and school='$school'");
-    if ($sql){
+    $sql = link_admin()->query("update student set high='$high', weight='$weight' ,choose_what='$choose' where name='$name' and school='$school'");
+    if ($sql) {
         echo "true";
         return true;
-    }else{
+    } else {
         echo "false";
         return false;
     }

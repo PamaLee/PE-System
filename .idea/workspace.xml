@@ -2,25 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="108d169b-c5b9-4d57-8a58-4bbe5dafb56e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/app/re_check.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/app/spawn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/app/student.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/verb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d0344d2c-24d0-40a2-95e2-5628e80086cb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d0344d2c-24d0-40a2-95e2-5628e80086cb.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/app/teacher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/app/teacher_check.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/app/test.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/teacher/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/class_mem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/class_mem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/res_study.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/res_study.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/re_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/re_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/spawn.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/spawn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/student.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/spawn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/spawn.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hearder.php" beforeDir="false" afterPath="$PROJECT_DIR$/hearder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/info_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/info_check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/log/log_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verb.php" beforeDir="false" afterPath="$PROJECT_DIR$/verb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/mdui.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/mdui.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,35 +83,39 @@
     <session id="-1449285849">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.12" value="3" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.20" value="2" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="46" />
+          <entry key="js" value="1" />
+          <entry key="php" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="46" />
+          <entry key="JavaScript" value="1" />
+          <entry key="PHP" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="9374" />
+          <entry key="js" value="15" />
+          <entry key="php" value="10868" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="36" />
-          <entry key="PHP" value="9337" />
+          <entry key="HTML" value="37" />
+          <entry key="JavaScript" value="15" />
+          <entry key="PHP" value="10830" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -127,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/app/spawn.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            <state relative-caret-position="588">
+              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -136,17 +135,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
+            <state relative-caret-position="582">
+              <caret line="71" column="58" lean-forward="true" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/app/student.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5040">
-              <caret line="185" column="41" lean-forward="true" selection-start-line="185" selection-start-column="41" selection-end-line="185" selection-end-column="41" />
+            <state relative-caret-position="276">
+              <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/app/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/app/teacher_check.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -154,35 +171,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/app/re_check.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="728">
-              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+            <state relative-caret-position="535">
+              <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/log/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4536">
-              <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
+            <state relative-caret-position="611">
+              <caret line="200" column="28" lean-forward="true" selection-start-line="200" selection-start-column="28" selection-end-line="200" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/class_mem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
-              <caret line="46" column="110" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="110" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/teacher/index.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/log_check.php">
+        <entry file="file://$PROJECT_DIR$/admin/app/teacher.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2156">
-              <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+            <state relative-caret-position="161">
+              <caret line="37" lean-forward="true" selection-end-line="176" />
             </state>
           </provider>
         </entry>
@@ -190,8 +203,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="39" column="15" selection-start-line="34" selection-start-column="34" selection-end-line="39" selection-end-column="15" />
+            <state relative-caret-position="495">
+              <caret line="749" column="61" lean-forward="true" selection-start-line="749" selection-start-column="61" selection-end-line="749" selection-end-column="61" />
               <folding>
                 <element signature="n#t#0;n#!!top" />
                 <element signature="n#get_school_name_by_user_name#0;n#!!top" />
@@ -206,7 +219,17 @@
     <findStrings>
       <find>snackbar</find>
       <find>disable</find>
+      <find>select</find>
+      <find>selected</find>
+      <find>student</find>
+      <find>teacher</find>
+      <find>教师</find>
     </findStrings>
+    <replaceStrings>
+      <replace>teacher</replace>
+      <replace>test</replace>
+      <replace>测试</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -216,7 +239,6 @@
       <list>
         <option value="$PROJECT_DIR$/er.php" />
         <option value="$PROJECT_DIR$/db.php" />
-        <option value="$PROJECT_DIR$/public/js/mdui.js" />
         <option value="$PROJECT_DIR$/public/css/mdui.css" />
         <option value="$PROJECT_DIR$/functions_layout.php" />
         <option value="/Applications/XAMPP/xamppfiles/etc/my.cnf" />
@@ -230,16 +252,20 @@
         <option value="$PROJECT_DIR$/log/info.php" />
         <option value="$PROJECT_DIR$/app/test.php" />
         <option value="$PROJECT_DIR$/app/res_study.php" />
-        <option value="$PROJECT_DIR$/log/index.php" />
         <option value="$PROJECT_DIR$/verb.php" />
         <option value="$PROJECT_DIR$/admin/verb.php" />
         <option value="$PROJECT_DIR$/hearder.php" />
-        <option value="$PROJECT_DIR$/log/log_check.php" />
-        <option value="$PROJECT_DIR$/admin/app/spawn.php" />
-        <option value="$PROJECT_DIR$/admin/index.php" />
-        <option value="$PROJECT_DIR$/functions.php" />
+        <option value="$PROJECT_DIR$/public/js/mdui.js" />
+        <option value="$PROJECT_DIR$/admin/app/teacher_check.php" />
         <option value="$PROJECT_DIR$/admin/app/re_check.php" />
+        <option value="$PROJECT_DIR$/log/log_check.php" />
+        <option value="$PROJECT_DIR$/log/index.php" />
+        <option value="$PROJECT_DIR$/admin/app/spawn.php" />
+        <option value="$PROJECT_DIR$/admin/app/teacher.php" />
         <option value="$PROJECT_DIR$/admin/app/student.php" />
+        <option value="$PROJECT_DIR$/admin/index.php" />
+        <option value="$PROJECT_DIR$/admin/app/test.php" />
+        <option value="$PROJECT_DIR$/functions.php" />
       </list>
     </option>
   </component>
@@ -280,16 +306,6 @@
               <item name="PE-System" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PE-System" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PE-System" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PE-System" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -356,12 +372,13 @@
       <workItem from="1566341125420" duration="5514000" />
       <workItem from="1566472376984" duration="6151000" />
       <workItem from="1566527687581" duration="5958000" />
-      <workItem from="1566618341470" duration="489000" />
+      <workItem from="1566618341470" duration="4667000" />
+      <workItem from="1566651481152" duration="2732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72558000" />
+    <option name="totallyTimeSpent" value="79468000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -373,10 +390,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="990" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="990" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977778" visible="true" weight="0.18763326" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4977778" visible="true" weight="0.18976545" />
       <window_info id="Structure" order="1" sideWeight="0.5011111" side_tool="true" weight="0.035676252" />
       <window_info id="Favorites" order="2" sideWeight="0.50222224" side_tool="true" weight="0.32960597" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -385,16 +402,16 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.07602339" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.07602339" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="8" weight="0.1625731" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.24912281" />
       <window_info anchor="bottom" x="2048" y="361" width="1405" height="170" id="Terminal" order="10" show_stripe_button="false" sideWeight="0.49946752" type="WINDOWED" weight="0.18888889" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005325" side_tool="true" weight="0.18888889" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.10554371" />
+      <window_info anchor="right" id="Database" order="3" weight="0.10554371" />
       <window_info anchor="right" id="Key Promoter X" order="4" weight="0.32995737" />
       <window_info anchor="right" id="Api Debugger" order="5" weight="0.2835821" />
     </layout>
@@ -425,6 +442,32 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -441,13 +484,6 @@
     <entry file="file://$PROJECT_DIR$/public/js/jq.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-18782" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/mdui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131145">
-          <caret line="6249" column="26" selection-start-line="6249" selection-start-column="19" selection-end-line="6249" selection-end-column="26" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/function_layout.php" />
@@ -574,38 +610,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/mdui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="4397" column="70" lean-forward="true" selection-start-line="4397" selection-start-column="70" selection-end-line="4397" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hearder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="40" column="109" selection-start-line="40" selection-start-column="109" selection-end-line="40" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/spawn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/re_check.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4536">
-          <caret line="175" column="16" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="16" />
+        <state relative-caret-position="560">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -618,15 +633,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/log/log_check.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2156">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+        <state relative-caret-position="354">
+          <caret line="64" column="29" lean-forward="true" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/spawn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/re_check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/student.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="90" column="22" lean-forward="true" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="71" column="58" lean-forward="true" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/teacher_check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="39" column="15" selection-start-line="34" selection-start-column="34" selection-end-line="39" selection-end-column="15" />
+        <state relative-caret-position="495">
+          <caret line="749" column="61" lean-forward="true" selection-start-line="749" selection-start-column="61" selection-end-line="749" selection-end-column="61" />
           <folding>
             <element signature="n#t#0;n#!!top" />
             <element signature="n#get_school_name_by_user_name#0;n#!!top" />
@@ -634,10 +691,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/student.php">
+    <entry file="file://$PROJECT_DIR$/admin/app/teacher.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5040">
-          <caret line="185" column="41" lean-forward="true" selection-start-line="185" selection-start-column="41" selection-end-line="185" selection-end-column="41" />
+        <state relative-caret-position="161">
+          <caret line="37" lean-forward="true" selection-end-line="176" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/index.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="200" column="28" lean-forward="true" selection-start-line="200" selection-start-column="28" selection-end-line="200" selection-end-column="28" />
         </state>
       </provider>
     </entry>

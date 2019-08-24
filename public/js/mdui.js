@@ -4395,7 +4395,7 @@
       });
 
       // selected
-      _this.$selected = $('<span class="mdui-select-selected">' + _this.text + '</span>');
+      _this.$selected = $('<span class="mdui-select-selected" id="selected">' + _this.text + '</span>');
 
       // select
       _this.$select =

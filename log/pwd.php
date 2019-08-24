@@ -15,33 +15,33 @@
  */
 
 session_start();
-$location="../";
+$location = "../";
 
-$title="修改密码";
+$title = "修改密码";
 include_once "../hearder.php";
 include_once "../functions.php";
 include_once "verb.php";
 include_once "../functions_layout.php";
 top_menu("修改密码");
-if (isset($_SESSION['username']) and isset($_SESSION['school'])){
-    $username=$_SESSION['username'];
-    $school=$_SESSION['school'];
-}elseif (isset($_SESSION['username_check']) and isset($_SESSION['school_check'])){
-    $username=$_SESSION['username_check'];
-    $school=$_SESSION['school_check'];
-}else{
+if (isset($_SESSION['username']) and isset($_SESSION['school'])) {
+    $username = $_SESSION['username'];
+    $school = $_SESSION['school'];
+} elseif (isset($_SESSION['username_check']) and isset($_SESSION['school_check'])) {
+    $username = $_SESSION['username_check'];
+    $school = $_SESSION['school_check'];
+} else {
     session_unset();
     session_destroy();
     header("Location: ./index.php");
 }
-$info=link_admin()->query("select * from student where school='$school' and name='$username'")->fetch_array();
-$pwd_check=$info['pwd_check'];
-if($pwd_check==1){
+$info = link_admin()->query("select * from student where school='$school' and name='$username'")->fetch_array();
+$pwd_check = $info['pwd_check'];
+if ($pwd_check == 1) {
     header("Location: ../");
     exit();
 }
 
-if (!isset($_SESSION['username_check']) and !isset($_SESSION['school_check'])){
+if (!isset($_SESSION['username_check']) and !isset($_SESSION['school_check'])) {
     header("Location:index.php");
     exit();
 }
@@ -62,39 +62,40 @@ if (!isset($_SESSION['username_check']) and !isset($_SESSION['school_check'])){
             <input class="mdui-textfield-input" type="password" name="repwd" id="repwd" onblur="pwd_check()"/>
         </div>
         <div class="mdui-text-center" id="check" style="display: none; color: red">两次输入的密码不同!</div>
-        <button class="mdui-btn  mdui-color-theme-accent mdui-ripple" id="submit" onclick="pwds()" disabled="true">修改</button>
+        <button class="mdui-btn  mdui-color-theme-accent mdui-ripple" id="submit" onclick="pwds()" disabled="true">修改
+        </button>
         <div class="mdui-text-center" id="error" style="display: none; color: red">发生错误，请稍后重试！</div>
     </div>
 </div>
 <script>
     function pwd_check() {
-        var pwd=$("#pwd").val();
-        var repwd=$("#repwd").val();
+        var pwd = $("#pwd").val();
+        var repwd = $("#repwd").val();
         if (pwd != repwd) {
-            document.getElementById("check").style.display="";
-        }else{
-            document.getElementById("check").style.display="none";
-            $("#submit").attr("disabled",false);
+            document.getElementById("check").style.display = "";
+        } else {
+            document.getElementById("check").style.display = "none";
+            $("#submit").attr("disabled", false);
         }
     }
 
     function pwds() {
-        var pwd=$("#pwd").val();
-        var repwd=$("#repwd").val();
+        var pwd = $("#pwd").val();
+        var repwd = $("#repwd").val();
         $.ajax({
             type: "GET",
             url: "pwd_check.php",
             data: "username=<?php
                 echo $_SESSION['username_check'];
-                ?>&pwd="+pwd+"&school=<?php
+                ?>&pwd=" + pwd + "&school=<?php
                 echo $_SESSION['school_check'];
-                ?>&repwd="+repwd,
+                ?>&repwd=" + repwd,
             success: function (data) {
-                if (data){
+                if (data) {
                     $("#submit").text("修改成功，正在为您跳转，请稍后...");
-                    setTimeout("window.location.href = \"./info.php\"",1000);
-                }else {
-                    document.getElementById("error").style.display="";//显
+                    setTimeout("window.location.href = \"./info.php\"", 1000);
+                } else {
+                    document.getElementById("error").style.display = "";//显
                 }
             }
         })

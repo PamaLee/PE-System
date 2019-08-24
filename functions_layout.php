@@ -19,7 +19,8 @@
 /**
  * @param $title
  */
-function top_menu($title){
+function top_menu($title)
+{
     echo "
 <div class=\"mdui-appbar mdui-appbar-fixed\">
     <div class=\"mdui-toolbar mdui-color-theme\">
@@ -33,33 +34,33 @@ function top_menu($title){
 </div>";
 }
 
-function fen_table($name,$school){
-echo "<div class=\"mdui-table-fluid\">";
-echo "<thead>
+function fen_table($name, $school)
+{
+    echo "<div class=\"mdui-table-fluid\">";
+    echo "<thead>
         <tr>
             <th>50米成绩</th>
             <th>长跑成绩</th>
-            <th>".get_choose_name($_SESSION['info']['choose_what'])."</th>
+            <th>" . get_choose_name($_SESSION['info']['choose_what']) . "</th>
             <th>总成绩</th>
         </tr>
         </thead>
         <tbody>";
-$test_num=get_newest_test($school);
-$info=get_test_res($school,$name,$test_num);
-$short_res=$info['short_run_res'];
-$long_res=$info['long_run_res'];
-$choose_res=$info['choose_res'];
-$short_sc=$info['short_run_sc'];
-$long_sc=$info['long_run_sc'];
-$choose=$info['choose_sc'];
-echo "<tr>
+    $test_num = get_newest_test($school);
+    $info = get_test_res($school, $name, $test_num);
+    $short_res = $info['short_run_res'];
+    $long_res = $info['long_run_res'];
+    $choose_res = $info['choose_res'];
+    $short_sc = $info['short_run_sc'];
+    $long_sc = $info['long_run_sc'];
+    $choose = $info['choose_sc'];
+    echo "<tr>
 <td>$short_res</td>
 <td>$long_res</td>
 <td>$choose_res</td>
 </tr>
 </tbody>
 ";
-
 
 
 }

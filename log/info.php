@@ -14,9 +14,9 @@
  * 所屬項目名稱：PE-System
  */
 session_start();
-$location="../";
+$location = "../";
 
-$title="完善您的信息";
+$title = "完善您的信息";
 include_once "../functions.php";
 include_once "verb.php";
 include_once "../functions_layout.php";
@@ -35,30 +35,30 @@ top_menu("完善您的信息")
             <i class="mdui-icon material-icons">accessibility</i>
             <label class="mdui-textfield-label">您的身高（厘米）</label>
             <input class="mdui-textfield-input" type="number" name="high" id="high" value="<?php
-            $name=$_SESSION['username'];
-            $school=$_SESSION['school'];
-            $info=link_admin()->query("select * from student where name='$name' and school='$school'")->fetch_array();
-            $high=$info['high'];
-            $weight=$info['weight'];
+            $name = $_SESSION['username'];
+            $school = $_SESSION['school'];
+            $info = link_admin()->query("select * from student where name='$name' and school='$school'")->fetch_array();
+            $high = $info['high'];
+            $weight = $info['weight'];
             echo $high;
-?>
+            ?>
 "/>
         </div>
         <div class="mdui-textfield mdui-textfield-floating-label">
             <i class="mdui-icon material-icons">airline_seat_recline_extra</i>
             <label class="mdui-textfield-label">您的体重（千克）</label>
-            <input class="mdui-textfield-input" type="number" name="weight" id="weight" value="<?php echo $weight?>"/>
+            <input class="mdui-textfield-input" type="number" name="weight" id="weight" value="<?php echo $weight ?>"/>
         </div>
         <div class="mdui-row">
             考试选项：<select class="mdui-select" name="choose" id="choose" mdui-select="{position: 'bottom'}">
                 <?php
-                if ($_SESSION['info']['sex']==0){
+                if ($_SESSION['info']['sex'] == 0) {
                     echo "<option value=\"1\">实心球</option>
                 <option value=\"2\">立定跳远</option>
                 <option value=\"3\">仰卧起坐</option>
                 <option value=\"4\">跳绳</option>";
                 }
-                if($_SESSION['info']['sex']==1){
+                if ($_SESSION['info']['sex'] == 1) {
                     echo "<option value=\"1\">实心球</option>
                 <option value=\"2\">立定跳远</option>
                 <option value=\"4\">跳绳</option>
@@ -88,7 +88,7 @@ top_menu("完善您的信息")
     function check() {
         var high = document.getElementById("high").value;
         var weight = document.getElementById("weight").value;
-        if (high=="") {
+        if (high == "") {
             mdui.snackbar({
                 closeOnOutsideClick: false,
                 timeout: 1000,
@@ -97,7 +97,7 @@ top_menu("完善您的信息")
             });
             return;
         }
-        if (weight==""){
+        if (weight == "") {
             mdui.snackbar({
                 closeOnOutsideClick: false,
                 timeout: 1000,
@@ -109,30 +109,29 @@ top_menu("完善您的信息")
     }
 
 
-
     function info() {
         var vals = document.getElementById("choose").value;
-        var high=$('#high').val();
-        var weight=$('#weight').val();
+        var high = $('#high').val();
+        var weight = $('#weight').val();
         $.ajax({
             type: "GET",
             url: "info_check.php",
             data: "username=<?php
                 echo $_SESSION['username'];
-                ?>&high="+high+"&school=<?php
+                ?>&high=" + high + "&school=<?php
                 echo $_SESSION['school'];
-                ?>&weight="+weight+"&choose="+vals,
+                ?>&weight=" + weight + "&choose=" + vals,
             success: function (data) {
-                if (data){
+                if (data) {
                     $("#submit").text("完善成功，正在为您跳转，请稍后...");
-                    setTimeout("window.location.href = \"../\"",1500);
-                }else {
+                    setTimeout("window.location.href = \"../\"", 1500);
+                } else {
                     mdui.snackbar({
-                    closeOnOutsideClick: false,
-                    timeout: 2000,
-                    message: '完善失败,请重试!',
-                    position: 'top'
-                });
+                        closeOnOutsideClick: false,
+                        timeout: 2000,
+                        message: '完善失败,请重试!',
+                        position: 'top'
+                    });
                     return;
                     $("#submit").text("完成");
                 }

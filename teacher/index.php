@@ -10,13 +10,6 @@
  * 如果遇到問題，請使用郵箱聯繫
  *
  * //======關於這個文件=======
- * 創建時間：下午2:41
+ * 創建時間：下午9:29
  * 所屬項目名稱：PE-System
  */
-
-
-session_start();
-$location = "../";
-include "../functions.php";
-
-print_r(get_second_test($_SESSION['school']));

@@ -18,10 +18,10 @@ error_reporting(0);
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 //报告所有错误
 error_reporting(E_ALL);
-$location="./";
+$location = "./";
 include_once "functions.php";
 include_once "./verb.php";
-$title="主页";
+$title = "主页";
 include "./hearder.php";
 include "./functions_layout.php";
 ?>
@@ -30,24 +30,24 @@ top_menu($title);
 ?>
 <div class="mdui-container">
 
-        <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
-            <?php
-            include_once "app/spawn.php";
-            ?>
-        </div>
+    <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
+        <?php
+        include_once "app/spawn.php";
+        ?>
+    </div>
 </div>
-        <div id="tab2">
-            <?php
-            include_once "app/class_mem.php";
-            ?>
-        </div>
+<div id="tab2">
+    <?php
+    include_once "app/class_mem.php";
+    ?>
+</div>
 
 
-        <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab3">
-            <?
-            include_once "app/res_study.php";
-            ?>
-        </div>
+<div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab3">
+    <?
+    include_once "app/res_study.php";
+    ?>
+</div>
 
 </div>
 

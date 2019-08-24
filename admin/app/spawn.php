@@ -27,9 +27,13 @@
     <div class="mdui-col-xs-6">
         <div class="mdui-card mdui-text-center">
             <h2 class="mdui-color-pink">数据统计</h2>
-            <h3>总学生数:<?php echo get_student_num($_SESSION['info']['school'],$_SESSION['info']['grade'])?>人</h3>
-            <h3>总教师数:<?php echo get_teacher_num($_SESSION['info']['school'],$_SESSION['info']['grade'])?>人</h3>
-            <h3>总测试次数:<?php echo get_test_num($_SESSION['info']['school'],$_SESSION['info']['grade'])?>次</h3>
+            <h3>总学生数:<?php echo get_student_num($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>人</h3>
+            <h3>总教师数:<?php echo get_teacher_num($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>人</h3>
+            <h3>总测试次数:<?php echo get_test_num($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>次</h3>
+            <h3>学生总登录次数:<?php echo get_test_num($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>次</h3>
+            <h3>教师总登录次数:<?php echo get_teacher_login_time($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>
+                次</h3>
+            <h3>管理员总登录次数:<?php echo get_test_num($_SESSION['info']['school'], $_SESSION['info']['grade']) ?>次</h3>
         </div>
     </div>
     <div class="mdui-col-xs-6">

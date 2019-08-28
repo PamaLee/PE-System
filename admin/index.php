@@ -28,8 +28,8 @@ include_once "../functions_layout.php";
         <a href="javascript:;" class="mdui-typo-headline">ADMIN</a>
         <a href="javascript:;" class="mdui-typo-title">控制台</a>
         <div class="mdui-toolbar-spacer"></div>
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+        <a href="javascript:window.location.reload();" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+        <a href="javascript:exit();" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">exit_to_app</i></a>
     </div>
 
     <div class="mdui-drawer" id="menu">
@@ -55,10 +55,7 @@ include_once "../functions_layout.php";
                 <i class="mdui-list-item-icon mdui-icon material-icons">border_color</i>
                 <div class="mdui-list-item-content">更改测试成绩</div>
             </li>
-            <li class="mdui-list-item mdui-ripple" onclick="window.location.href='./index.php?t=board'">
-                <i class="mdui-list-item-icon mdui-icon material-icons">email</i>
-                <div class="mdui-list-item-content">发布年级公告</div>
-            </li>
+
 
         </ul>
     </div>
@@ -77,7 +74,14 @@ include_once "../functions_layout.php";
     }
     ?>
 </div>
+<script>
+    function exit() {
+        mdui.confirm('您确定安全退出账户吗?', function () {
+            setTimeout("  window.location.href = \"../log/index.php?c=loginout\";",1000);
 
+        });
+    }
+</script>
 
 
 

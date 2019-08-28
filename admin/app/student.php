@@ -79,7 +79,7 @@ if (isset($_GET["c"]) and $_GET['c'] == "del") {
         </tr>
         </thead>";
                 echo "<tbody>";
-                $student = link_admin()->query("select * from student where school='$school' and class='$class' and grade='$grade'");
+                $student = link_admin()->query("select * from student where school='$school' and class='$class' and grade='$grade' order by study_hao ASC ");
                 foreach ($student as $row) {
                     if ($row['first_time_login'] == 0) {
                         $first = "否";
@@ -153,7 +153,7 @@ if (isset($_GET['student'])) {
                        name="classes" id="classes"/>
             </div>
             <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="que()">确定</button>
-            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close()">取消</button>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close();history.go(-1)">取消</button>
 
         </div>
     </div>
@@ -166,17 +166,20 @@ if (isset($_GET['student'])) {
 
         function funs(student) {
             mdui.confirm('您确定删除这个学生吗?', function () {
-                mdui.alert(window.location.href);
                 var urls = window.location.href.replace("#mdui-dialog", "");
-                window.location.href = urls + "&c=del&student=" + student;
+                setTimeout(function () {
+                    window.location.href = urls + "&c=del&student=" + student;
+                },500);
             });
         }
 
         function re(student) {
             mdui.confirm('您确定修改这个学生的信息吗?', function () {
-                mdui.alert(window.location.href);
-                var urls = window.location.href.replace("#mdui-dialog", "");
-                window.location.href = urls + "&c=re&student=" + student;
+                var urls = window.location.href.replace("#mdui-dialog","");
+                setTimeout(function () {
+                    window.location.href = urls+"&c=re&student="+student;
+                },500);
+
             });
         }
 
@@ -204,7 +207,7 @@ if (isset($_GET['student'])) {
                         });
                         document.getElementById("submit").innerHTML = "修改成功!";
                         setTimeout("inst.close()", 2000);
-                        setTimeout("history.go(-2)", 3000);
+                        setTimeout("history.go(-1)", 3000);
                     }
                 }
             })

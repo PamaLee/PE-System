@@ -40,7 +40,7 @@ if (isset($_SESSION['username_check']) or isset($_SESSION['school_check'])) {
     exit();
 }
 include "../functions_layout.php";
-top_menu($title);
+top_menu($title,$location);
 
 ?>
 

@@ -70,7 +70,8 @@ if (isset($_GET["c"]) and $_GET['c'] == "del") {
             echo "<td>" . $row['login_time'] . "</td>";
             echo "<td>" . $first . "</td>";
             $name = $row['name'];
-            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name')\">修改</button><button class='mdui-btn mdui-color-theme mdui-ripple' onclick=\"";
+            $class=$row['class'];
+            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name','$class')\">修改</button><button class='mdui-btn mdui-color-theme mdui-ripple' onclick=\"";
             ?>funs('<? echo $name; ?>');
             <?php echo "\">删除</button> </td>";
         }
@@ -104,7 +105,7 @@ if (isset($_GET['teacher'])) {
                    name="classes" id="classes"/>
         </div>
         <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="que()">确定</button>
-        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close();history.go(-2);">取消</button>
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close();history.go(-1);">取消</button>
 
     </div>
 </div>
@@ -117,17 +118,18 @@ if (isset($_GET['teacher'])) {
 
     function funs(teacher) {
         mdui.confirm('您确定删除这个教师吗?', function () {
-            mdui.alert(window.location.href);
             var urls = window.location.href.replace("#mdui-dialog", "");
             window.location.href = urls + "&c=del&teacher=" + teacher;
         });
     }
 
-    function re(teacher) {
+    function re(teacher,classes) {
         mdui.confirm('您确定修改这个教师的信息吗?', function () {
-            mdui.alert(window.location.href);
-            var urls = window.location.href.replace("#mdui-dialog", "");
-            window.location.href = urls + "&c=re&teacher=" + teacher;
+            var urls = window.location.href.replace("#mdui-dialog","");
+            setTimeout(function () {
+                window.location.href = urls+"&c=re&teacher="+teacher+"&reclass="+classes;
+            },500);
+
         });
     }
 
@@ -139,12 +141,12 @@ if (isset($_GET['teacher'])) {
         $.ajax({
             type: "GET",
             url: "app/teacher_check.php",
-            data: "rename=<?echo $_GET['teacher']?>&reclass=<? echo $_GET['class']?>&name=" + username + "&class=" + classes,
+            data: "rename=<?echo $_GET['teacher']?>&reclass=<? echo $_GET['reclass']?>&name=" + username + "&class=" + classes,
             success: function (data) {
                 if (data.indexOf("服务端出现错误") != -1) {
                     document.write("<h1>" + data + "</h1>");
                 }
-                if (data) {
+                if (data == "true") {
                     mdui.snackbar({
                         closeOnOutsideClick: false,
                         timeout: "2000",
@@ -153,7 +155,16 @@ if (isset($_GET['teacher'])) {
                     });
                     document.getElementById("submit").innerHTML = "修改成功!";
                     setTimeout("inst.close()", 2000);
-                    setTimeout("history.go(-2)", 3000);
+                    setTimeout("history.go(-1)", 3000);
+                }else{
+                    mdui.snackbar({
+                        closeOnOutsideClick: false,
+                        timeout: "2000",
+                        message: '修改失败!',
+                        position: 'top'
+                    });
+                    document.getElementById("submit").innerHTML = "修改失败!";
+                    setTimeout("window.location.reload()", 8000);
                 }
             }
         })

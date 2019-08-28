@@ -15,7 +15,7 @@
  */
 
 $location = "../";
-include "../functions.php";
+include_once "../functions.php";
 include_once "../verb.php";
 session_start();
 //导出表格
@@ -26,43 +26,61 @@ session_start();
     <div style="padding-top: 75px">
         <div class="mdui-container">
             <?php
-            $school = $_SESSION['school'];
-            $test_num = get_newest_test($school);
+            $grade = $_SESSION['info']['grade'];
+            $class = $_SESSION['info']['class'];
+            $school = $_SESSION['info']['school'];
+            $test_num = get_newest_test($school,$grade);
+            $test = link_admin()->query("select * from test_name where school='$school' and grade='$grade'");
             echo "测试:<select class=\"mdui-select\" mdui-select=\"{position: 'bottom'}\" name=\"grade\" id=\"grade\">";
-            $test = link_admin()->query("select * from test_name where school='$school'");
             if ($test->num_rows == 1) {
-                $test_name = $test->fetch_array()['name'];
-                $test_uid = $test->fetch_array()['num'];
-                echo "<option value='$test_uid'>$test_name</option>";
+                $testes = link_admin()->query("select * from test_name where school='$school' and grade='$grade'");
+                $test_infos = $testes->fetch_array();
+                $test_name=$test_infos['name'];
+                $test_u=$test_infos['num'];
+                ?>
+                <option value="<? echo $test_u;?>"><? echo $test_name; ?></option>
+            <?php
+
             }
             if ($test->num_rows > 1) {
-                $test_name = $test->fetch_all();
+                $test_name = $test;
                 foreach ($test_name as $v) {
                     ?>
-                    <option value="<?php echo $v[2]; ?>"
-                            onclick="chose(<?php echo $v[2]; ?>)"><?php echo $v[1]; ?></option>
+                    <option value="<?php echo $v['num']; ?>"><?php echo $v['name']; ?></option>
                     <?php
                 }
             }
             echo "</select>";
             echo "<button class=\"mdui-btn mdui-color-theme-accent mdui-ripple\" onclick='chose()'>查看</button>";
             ?>
+            <script>
+                function chose() {
+                    var datas = document.getElementById("grade").value;
+                    window.location.href = "http://localhost/PE-System/index.php?grade=" + datas + "#tab2";
+                }
+            </script>
             <div class="mdui-table-fluid">
                 <?php
+                //如果存在grade参数
                 if (isset($_GET['grade'])) {
                     $te = $_GET['grade'];
-                    $num = link_admin()->query("select * from test_res where school='$school' and test_num='$te'")->num_rows;
+                    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and test_num='$te'")->num_rows;
                     if ($num == 0) {
-                        echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink'>对不起,暂无测试数据!</h2></div></div>";
+                        echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink' id='1'>对不起,暂无测试数据!</h2></div></div></div></div></div>";
+                        return false;
                     }
                 } else {
-                    $num = link_admin()->query("select * from test_res where school='$school' and test_num='$test_num'")->num_rows;
+                    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and test_num='$test_num'")->num_rows;
                     if ($num == 0) {
-                        echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink'>对不起,暂无测试数据!</h2></div></div>";
+                        echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink' id='2'>对不起,暂无测试数据!</h2></div></div></div></div></div>";
+                        return false;
                     }
                 }
+
+
                 if ($test_num == false) {
-                    echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink'>对不起,暂无测试数据!</h2></div>";
+                    echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink' id='3'>对不起,暂无测试数据!";
+                    echo "</h2></div></div></div></div></div>";
                 } else {
                     if (isset($_GET['grade'])) {
                         $te = $_GET['grade'];
@@ -71,7 +89,6 @@ session_start();
                         $info = link_admin()->query("select * from test_name where school='$school' and num='$test_num'")->fetch_array()['name'];
                     }
                     echo "<div class='mdui-text-color-pink mdui-text-center' style='font-size: 25px;padding-top: 20px'>$info</div>";
-
                     echo "<table class=\"mdui-table mdui-table-hoverable\">
         <thead>
        
@@ -87,31 +104,38 @@ session_start();
         </tr>
         </thead>
         <tbody>";
-                }
-                if (isset($_GET['grade'])) {
-                    $te = $_GET['grade'];
-                    $rs = link_admin()->query("select * from test_res where school='$school' and test_num='$te' ORDER BY `study_hao` ASC");
-                } else {
-                    $rs = link_admin()->query("select * from test_res where school='$school' and test_num='$test_num' ORDER BY `study_hao` ASC");
-                }
-
-
-                foreach ($rs as $res) {
-                    $name = $res['name'];
-                    $sex = $res['sex'];
-                    if ($sex == 0) {
-                        $sex = "女";
+                    $grade=$_SESSION['info']['grade'];
+                    $school=$_SESSION['info']['school'];
+                    $uid=$_SESSION['info']['uid'];
+                    if (isset($_GET['grade'])) {
+                        $te = $_GET['grade'];
+                        $rs = link_admin()->query("select * from student where school='$school' and grade='$grade' and class='$class' ORDER BY `study_hao` ASC");
                     } else {
-                        $sex = "男";
+                        $rs = link_admin()->query("select * from student where school='$school' and grade='$grade' and class='$class'  ORDER BY `study_hao` ASC");
                     }
-                    $study_hao = get_info($school, $name)['study_hao'];
-                    $shortrun = $res['short_run_sc'];
-                    $longrun = $res['long_run_sc'];
-                    $choose_what = $res['choose_what'];
-                    $choose_sc = $res['choose_sc'];
-                    $zong = $res['zong_res'];
-                    $choose_name = get_choose_name($choose_what);
-                    echo "<tr>
+                    foreach ($rs as $to) {
+                        $name=$to['name'];
+                        if (isset($_GET['grade'])) {
+                            $te = $_GET['grade'];
+                            $res=link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and uid='$uid' and test_num='$te' order by study_hao ASC")->fetch_array();
+                        } else {
+                            $res=link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and uid='$uid' and test_num='$test_num' order by study_hao ASC")->fetch_array();
+                        }
+                        $names = $res['name'];
+                        $sex = $res['sex'];
+                        if ($sex == 0) {
+                            $sex = "女";
+                        } else {
+                            $sex = "男";
+                        }
+                        $study_hao = $to['study_hao'];
+                        $shortrun = $res['short_run_sc'];
+                        $longrun = $res['long_run_sc'];
+                        $choose_what = $res['choose_what'];
+                        $choose_sc = $res['choose_sc'];
+                        $zong = $res['zong_res'];
+                        $choose_name = get_choose_name($choose_what);
+                        echo "<tr>
             <td>" . $study_hao . "</td>
             <td>" . $name . "</td>
             <td>$sex</td>
@@ -121,20 +145,18 @@ session_start();
             <td>$choose_sc</td>
             <td>$zong</td>
         </tr>";
-                }
+    }
+}
+
                 ?>
                 </tbody>
                 </table>
             </div>
-
-
-            <script>
-                function chose() {
-                    var datas = document.getElementById("grade").value;
-                    window.location.href = "http://localhost/PE-System/index.php?grade=" + datas + "#tab2";
-                }
-
-            </script>
         </div>
     </div>
 </div>
+
+
+
+
+

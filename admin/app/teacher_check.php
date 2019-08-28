@@ -23,7 +23,6 @@ if (!isset($_GET['rename'], $_GET['name'], $_GET['class'], $_GET['reclass'])) {
     echo "false";
     return false;
 } else {
-
     $name = $_GET['name'];
     $rename = $_GET['rename'];
     $class = $_GET['class'];
@@ -34,7 +33,7 @@ if (!isset($_GET['rename'], $_GET['name'], $_GET['class'], $_GET['reclass'])) {
         echo "false";
         return false;
     }
-    $sql = link_admin()->query("update teacher set name='$name',class='$class' where name='$rename' and grade='$grade' and school='$school'");
+    $sql = link_admin()->query("update teacher set name='$name',class='$class' where name='$rename' and grade='$grade' and school='$school' and class='$reclass'");
     if ($sql) {
         echo "true";
         return true;

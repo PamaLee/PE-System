@@ -27,16 +27,13 @@
             font-family: 'Number';   /*字体名称*/
             src: url('public/fonts/blipper.ttf');       /*字体源文件*/
         }
-
         @font-face {
             font-family: "Chinese";
             src: url("public/fonts/Chinese.ttf");
         }
-
         .number {
             font-family: "Number";
         }
-
         .chinese {
             font-family: "Chinese";
         }
@@ -44,4 +41,4 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>体育系统——<?php echo $title ?></title>
 </head>
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixe mdui-drawer-body-left">
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixed mdui-drawer-body-left">

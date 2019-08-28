@@ -19,17 +19,16 @@
 /**
  * @param $title
  */
-function top_menu($title)
+function top_menu($title,$location)
 {
     echo "
 <div class=\"mdui-appbar mdui-appbar-fixed\">
     <div class=\"mdui-toolbar mdui-color-theme\">
-       
         <a href=\"javascript:;\" class=\"mdui-typo-headline\">体育分析系统</a>
         <a href=\"javascript:;\" class=\"mdui-typo-title\">$title</a>
         <div class=\"mdui-toolbar-spacer\"></div>
         <a href=\"javascript:;\" class=\"mdui-btn mdui-btn-icon\"><i class=\"mdui-icon material-icons\" onclick='window.location.reload()' '>refresh</i></a>
-        <a href=\"javascript:;\" class=\"mdui-btn mdui-btn-icon\"><i class=\"mdui-icon material-icons\">more_vert</i></a>
+        <a href=\"".$location."log/index.php?c=loginout\" class=\"mdui-btn mdui-btn-icon\"><i class=\"mdui-icon material-icons\">exit_to_app</i></a>
     </div>
 </div>";
 }

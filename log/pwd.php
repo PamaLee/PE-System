@@ -22,7 +22,7 @@ include_once "../hearder.php";
 include_once "../functions.php";
 include_once "verb.php";
 include_once "../functions_layout.php";
-top_menu("修改密码");
+top_menu("修改密码",$location);
 if (isset($_SESSION['username']) and isset($_SESSION['school'])) {
     $username = $_SESSION['username'];
     $school = $_SESSION['school'];

@@ -13,3 +13,11 @@
  * 創建時間：下午9:29
  * 所屬項目名稱：PE-System
  */
+
+$location="../";
+$title="教师主页";
+include_once "../functions.php";
+include_once "../functions_layout.php";
+include_once "../hearder.php";
+
+top_menu("教师主页",$location);

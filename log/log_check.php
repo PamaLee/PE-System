@@ -60,8 +60,12 @@ if (!isset($_GET['username'])) {
         $schools = link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num = link_admin()->query("select * from teacher where school='$schools' and  name='$username' and pwd='$pwd'")->num_rows;
         if ($num > 0) {
+            $last_login = date("Y-m-d H:i:s");
+            link_admin()->query("UPDATE `teacher` SET last_login='$last_login' where name='$username' and school='$schools'");
             link_admin()->query("UPDATE `teacher` SET login_time=login_time+1 where name='$username' and school='$schools'");
             $info = link_admin()->query("select * from teacher where school='$schools' and name='$username'")->fetch_array();
+            link_admin()->query("update teacher set first_time_login='1' where school='$schools' and name='$username'");
+
             echo "toteacher";
             $_SESSION['username'] = $username;
             $_SESSION['info'] = $info;
@@ -71,6 +75,8 @@ if (!isset($_GET['username'])) {
             return false;
         }
     } elseif ($who == "admin") {
+        $last_login = date("Y-m-d H:i:s");
+        link_admin()->query("UPDATE `admin` SET last_login='$last_login' where name='$username' and school='$schools'");
         $schools = link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num = link_admin()->query("select * from admin where school='$schools' and name='$username' and pwd='$pwd'")->num_rows;
         if ($num > 0) {

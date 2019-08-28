@@ -27,8 +27,7 @@ include_once "../functions.php";
     <div class="mdui-row" style="padding-top: 75px">
         <div class="mdui-text-center" style="padding-bottom: 10px;font-size: 20px"><h2><?php
                 echo $_SESSION['username'];
-                ?></h2>
-        </div>
+                ?></h2></div>
         <div class="mdui-col-xs-6">
             <div class="mdui-card mdui-text-center">
                 <h3>身体状况(<?php
@@ -83,25 +82,21 @@ include_once "../functions.php";
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
-
         </div>
         <div class="mdui-col-xs-6">
             <div class="mdui-card mdui-text-center">
                 <h3><?php
                     $school = $_SESSION['school'];
-                    $test_num = get_newest_test($school);
+                    $grade=$_SESSION['info']['grade'];
+                    $test_num = get_newest_test($school,$grade);
                     $name = link_admin()->query("select * from test_name where school='$school' and num='$test_num'")->fetch_array()['name'];
                     echo $name;
                     ?></h3>
                 <h4>(上次成绩)->(本次成绩)</h4>
-
                 <?php
-
                 if ($second = get_second_test($_SESSION['school']) != false) {
-                    $newest = get_newest_test($school);
+                    $newest = get_newest_test($school,$grade);
                     $username = $_SESSION['username'];
                     if (link_admin()->query("select * from test_res where school='$school' and test_num='$newest' and name='$username'")->num_rows == 0) {
                         if (link_admin()->query("select * from test_res where school='$school' and test_num='$second' and name='$username'")->num_rows == 0) {
@@ -128,4 +123,3 @@ include_once "../functions.php";
         </div>
     </div>
 </div>
-

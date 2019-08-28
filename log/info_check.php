@@ -32,6 +32,13 @@ if (!isset($_GET['high']) or !isset($_GET['weight'])) {
     }
     $sql = link_admin()->query("update student set high='$high', weight='$weight' ,choose_what='$choose' where name='$name' and school='$school'");
     if ($sql) {
+        session_unset();
+        session_destroy();
+        session_start();
+        $_SESSION['username'] = $name;
+        $_SESSION['school'] = $school;
+        $_SESSION['info'] = get_info($school, $name);
+        $_SESSION['who'] = "student";
         echo "true";
         return true;
     } else {

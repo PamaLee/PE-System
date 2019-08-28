@@ -13,6 +13,7 @@
  * 創建時間：上午9:02
  * 所屬項目名稱：PE-System
  */
+session_start();
 ini_set("max_execution_time", "1800");
 $location = "../";
 include_once "../verb.php";
@@ -33,8 +34,9 @@ include_once "../functions.php";
                 <div class="mdui-card-media">
 
                     <div class="number" style="text-align: center;font-size: <?php
+                    $grade=$_SESSION['info']['grade'];
                     $school = $_SESSION['info']['school'];
-                    $test = get_newest_test($school);
+                    $test = get_newest_test($school,$grade);
                     if ($test == false) {
                         echo "20px";
                     } else {
@@ -48,7 +50,8 @@ include_once "../functions.php";
                         echo "black";
                     } else {
                         $name = $_SESSION['info']['name'];
-                        $res = link_admin()->query("select * from test_res where school='$school' and name='$name' and test_num='$test'")->fetch_array();
+                        $uid= $_SESSION['info']['uid'];
+                        $res = link_admin()->query("select * from test_res where school='$school' and uid='$uid' and test_num='$test'")->fetch_array();
                         $zong_res = $res['zong_res'];
                         $num = $zong_res;
 
@@ -64,44 +67,42 @@ include_once "../functions.php";
                             echo "green";
                         }
                     }
-
-
                     ?>">
                         <?php
                         if ($test == false) {
                             echo "当前暂无任何测试成绩";
                             echo "</div></div></div></div></div></div>";
-                            return;
+                            return false;
                         } else {
                             echo $zong_res;
                         }
                         ?>
                     </div>
-                    <?php
-                    ?>
 
                 </div>
+
                 <?php
                 $name = $_SESSION['username'];
                 $school = $_SESSION['school'];
-                $test_num = get_newest_test($school);
-                $num = link_admin()->query("select * from test_res where name='$name' and school='$school' and test_num='$test_num'")->num_rows;
-                $info = link_admin()->query("select * from test_name where school='$school' and num='$test_num'")->fetch_array()['name'];
+                $grade=$_SESSION['info']['grade'];
+                $test_num = get_newest_test($school,$grade);
+                $num = link_admin()->query("select * from test_res where name='$name' and school='$school' and test_num='$test_num' and grade='$grade'")->num_rows;
+                $info = link_admin()->query("select * from test_name where school='$school' and num='$test_num' and grade='$grade'")->fetch_array()['name'];
                 if ($num == 0) {
                     echo "<div class='mdui-text-center mdui-color-theme' style='font-size: 25px'>$info</div>";
-                    echo "<div class='mdui-text-center mdui-color-pink' style='font-size: 25px'>暂无您最新的考试信息,请等待成绩公布</div></div></div></div>";
-                    return;
+                    echo "<div class='mdui-text-center mdui-color-pink' style='font-size: 25px'>暂无您最新的考试信息,请等待成绩公布</div></div></div></div></div></div>";
+                    return false;
                 }
 
                 ?>
 
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title"><?php
-                        $test = get_newest_test($school);
+                        $test = get_newest_test($school,$grade);
                         if ($test == false) {
                             echo "无测试";
                         } else {
-                            $name = link_admin()->query("select * from test_name where num='$test'")->fetch_array()['name'];
+                            $name = link_admin()->query("select * from test_name where num='$test' and grade='$grade' and school='$school'")->fetch_array()['name'];
                             echo $name;
                         }
                         ?></div><!-- 当前测试成绩的名称 -->
@@ -109,7 +110,7 @@ include_once "../functions.php";
                         if ($test == false) {
                             echo "无";
                         } else {
-                            $time = link_admin()->query("select * from test_name where num='$test' and school='$school'")->fetch_array();
+                            $time = link_admin()->query("select * from test_name where num='$test' and school='$school' and grade='$grade'")->fetch_array();
                             $time = $time['date'];
                             echo $time;
                         }
@@ -132,7 +133,7 @@ include_once "../functions.php";
         </tr>
         </thead>
         <tbody>";
-                    $test_num = get_newest_test($school);
+                    $test_num = get_newest_test($school,$grade);
                     $name = $_SESSION['username'];
                     $info = get_test_res($school, $name, $test_num);
                     $short_res = $info['short_run_res'];
@@ -152,10 +153,10 @@ include_once "../functions.php";
 ";
                     ?>
                     </table>
-                </div>
-            </div>
-
 
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </div>

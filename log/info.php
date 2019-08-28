@@ -23,7 +23,7 @@ include_once "../functions_layout.php";
 include_once "../hearder.php";
 
 
-top_menu("完善您的信息")
+top_menu("完善您的信息",$location)
 ?>
 
 <div class="mdui-container">

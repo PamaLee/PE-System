@@ -88,13 +88,13 @@ function get_school_name_by_user_name($name)
  * @param $school_num
  * @return mixed
  */
-function get_newest_test($school_num)
+function get_newest_test($school_num,$grade)
 {
     $time_array = array();
-    $num = link_admin()->query("select * from test_name where school='$school_num'")->num_rows;
+    $num = link_admin()->query("select * from test_name where school='$school_num' and grade='$grade' ")->num_rows;
     if ($num > 1) {
         $bi = 0;
-        $test_all = link_admin()->query("select * from test_name where school='$school_num'")->fetch_all();
+        $test_all = link_admin()->query("select * from test_name where school='$school_num' and grade='$grade'")->fetch_all();
         foreach ($test_all as $row => $item) {
             $time = $test_all[$row][4];
             if ($bi == 0) {
@@ -108,7 +108,7 @@ function get_newest_test($school_num)
         $id = link_admin()->query("select * from test_name where date='$bi'")->fetch_array()['num'];
         return $id;
     } elseif ($num == 1) {
-        $id = link_admin()->query("select * from test_name where school='$school_num'")->fetch_array()['num'];
+        $id = link_admin()->query("select * from test_name where school='$school_num' and grade='$grade'")->fetch_array()['num'];
         return $id;
     } else {
         return false;
@@ -695,7 +695,7 @@ function test_insert($num, $school, $class, $test_num)
         $zong = $short_run_res + $choose_res_what + $long_run_res;
         $study_hao = rand(1, 50);
         $sql = link_admin()->query("INSERT INTO student (uid,study_hao, name, grade, class, pwd, school, sex) values ('$uid','$study_haos','$name','$grade','$class','$pwd','$school','$sex')");
-        $sql2 = link_admin()->query("insert into test_res(school, name,study_hao, test_num, long_run_res, short_run_res, choose_res, long_run_sc, short_run_sc, choose_sc, choose_what, zong_res, sex)values ('$school','$name','$study_haos','$test_num','$long_run_sc','$short_run_sc','$choose_res','$long_run_res','$short_run_res','$choose_res_what','$choose_what','$zong','$sex')");
+        $sql2 = link_admin()->query("insert into test_res(school,grade,class, uid,study_hao, test_num, long_run_res, short_run_res, choose_res, long_run_sc, short_run_sc, choose_sc, choose_what, zong_res, sex)values ('$school','$grade','$class','$uid','$study_haos','$test_num','$long_run_sc','$short_run_sc','$choose_res','$long_run_res','$short_run_res','$choose_res_what','$choose_what','$zong','$sex')");
         if ($sql and $sql2) {
             echo "完成";
         } else {
@@ -764,6 +764,27 @@ function get_teacher_login_time($school, $grade)
     }
     return $login_time;
 }
+
+function get_admin_login_time($school,$grade)
+{
+    $admin = link_admin()->query("SELECT * FROM admin where school='$school' and grade='$grade'");
+    $login_time = 0;
+    foreach ($admin as $row) {
+        $login_time = $login_time + $row['login_time'];
+    }
+    return $login_time;
+}
+
+function get_student_login_time($school,$grade){
+    $student=link_admin()->query("select * from student where school='$school' and grade='$grade'");
+    $login_time = 0;
+    foreach ($student as $row) {
+        $login_time = $login_time + $row['login_time'];
+    }
+    return $login_time;
+}
+
+
 
 function get_isset_chengji_student($school, $grade, $test_num)
 {

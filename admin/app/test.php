@@ -54,11 +54,9 @@ $grade = $_SESSION['info']['grade'];
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['num'] . "</td>";
             echo "<td>" . $row['date'] . "</td>";
-            echo "<td>" . $first . "</td>";
+            echo "<td>" . get_isset_chengji_student($school,$grade,$row['num']) . "</td>";
             $name = $row['name'];
-            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name')\">修改</button><button class='mdui-btn mdui-color-theme mdui-ripple' onclick=\"";
-            ?>funs('<? echo $name; ?>');
-            <?php echo "\">删除</button> </td>";
+            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name')\">修改</button></td>";
         }
 
         echo "</tbody>";
@@ -79,15 +77,9 @@ if (isset($_GET['test'])) {
     <div class="mdui-container mdui-color-white mdui-dialog-content">
         <div class="mdui-textfield mdui-textfield-floating-label">
             <i class="mdui-icon material-icons">account_box</i>
-            <label class="mdui-textfield-label">姓名</label>
+            <label class="mdui-textfield-label">名称</label>
             <input class="mdui-textfield-input" type="text" value="<?php echo $infoes['name']; ?>" required
                    name="username" id="username"/>
-        </div>
-        <div class="mdui-textfield mdui-textfield-floating-label">
-            <i class="mdui-icon material-icons">class</i>
-            <label class="mdui-textfield-label">班级</label>
-            <input class="mdui-textfield-input" type="text" value="<?php echo $infoes['class']; ?>" required
-                   name="classes" id="classes"/>
         </div>
         <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="que()">确定</button>
         <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close();history.go(-2);">取消</button>
@@ -125,7 +117,7 @@ if (isset($_GET['test'])) {
         $.ajax({
             type: "GET",
             url: "app/test_check.php",
-            data: "rename=<?echo $_GET['test']?>&reclass=<? echo $_GET['class']?>&name=" + username + "&class=" + classes,
+            data: "rename=<?echo $_GET['test']?>&name=" + username,
             success: function (data) {
                 if (data.indexOf("服务端出现错误") != -1) {
                     document.write("<h1>" + data + "</h1>");

@@ -13,11 +13,12 @@
  * 創建時間：上午8:23
  * 所屬項目名稱：PE-System
  */
-error_reporting(0);
-//报告运行时错误
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-//报告所有错误
-error_reporting(E_ALL);
+
+
+//error_reporting(-1);
+//ini_set('display_errors', 1);
+
+
 $location = "./";
 include_once "functions.php";
 include_once "./verb.php";
@@ -26,7 +27,7 @@ include "./hearder.php";
 include "./functions_layout.php";
 ?>
 <?php
-top_menu($title);
+top_menu($title,$location);
 ?>
 <div class="mdui-container">
 
@@ -35,7 +36,7 @@ top_menu($title);
         include_once "app/spawn.php";
         ?>
     </div>
-</div>
+
 <div id="tab2">
     <?php
     include_once "app/class_mem.php";
@@ -51,7 +52,7 @@ top_menu($title);
 
 </div>
 
-<div class=" mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-indigo mdui-tab" mdui-tab>
+<div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-indigo mdui-tab" mdui-tab>
     <a href="#tab1" class="mdui-ripple mdui-ripple-white">
         <i class="mdui-icon material-icons">account_circle</i>
         <label>主页</label>

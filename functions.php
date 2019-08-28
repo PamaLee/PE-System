@@ -117,9 +117,9 @@ function get_newest_test($school_num,$grade)
 
 }
 
-function get_test_res($school, $name, $test_num)
+function get_test_res($school, $uid, $test_num)
 {
-    $info = link_admin()->query("select * from test_res where school='$school' and name='$name' and test_num='$test_num'")->fetch_array();
+    $info = link_admin()->query("select * from test_res where school='$school' and uid='$uid' and test_num='$test_num'")->fetch_array();
     return $info;
 }
 

@@ -57,7 +57,7 @@ if (!empty($_POST)) {
                 $user = $_SESSION['username'];
             }
             $lo = $loto;
-            $body = json_encode($_POST);
+            $body = $_POST;
             $do = into_database($loto, GetIP(), $user, "POST", $body);
             if ($do == true) {
                 print "<br>您的IP已经被加入云端黑名单库";
@@ -81,7 +81,7 @@ if (!empty($_POST)) {
                 $user = $_SESSION['username'];
             }
             $lo = $loto;
-            $body = json_encode($_GET);
+            $body = $_GET;
             $do = into_database($loto, GetIP(), $user, "GET", $body);
             if ($do == true) {
                 print "<br>您的IP已经被加入云端黑名单库";
@@ -157,7 +157,7 @@ function check_IP($IP)
     $num = $ip_to->num_rows;
     $time = $ip_to->fetch_array()['time'];
     if ($num > 0) {
-        exit("对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779");
+        exit("<div class='mdui-valign mdui-container' style='padding-top: 150px'><div class='mdui-card mdui-color-red'><h1>对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779</h1></div></div> ");
     }
 }
 
@@ -167,6 +167,6 @@ function check_user($username)
     $num = $user_to->num_rows;
     $time = $user_to->fetch_array()['time'];
     if ($num > 0) {
-        exit("对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779");
+        exit("<div class='mdui-valign mdui-container' style='padding-top: 150px'><div class='mdui-card mdui-color-red'><h1>对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779</h1></div></div> ");
     }
 }

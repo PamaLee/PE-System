@@ -83,10 +83,11 @@ include_once "../functions.php";
 
                 <?php
                 $name = $_SESSION['username'];
-                $school = $_SESSION['school'];
+                $uid = $_SESSION['info']['uid'];
+                $school = $_SESSION['info']['school'];
                 $grade=$_SESSION['info']['grade'];
                 $test_num = get_newest_test($school,$grade);
-                $num = link_admin()->query("select * from test_res where name='$name' and school='$school' and test_num='$test_num' and grade='$grade'")->num_rows;
+                $num = link_admin()->query("select * from test_res where uid='$uid' and school='$school' and test_num='$test_num' and grade='$grade'")->num_rows;
                 $info = link_admin()->query("select * from test_name where school='$school' and num='$test_num' and grade='$grade'")->fetch_array()['name'];
                 if ($num == 0) {
                     echo "<div class='mdui-text-center mdui-color-theme' style='font-size: 25px'>$info</div>";
@@ -97,13 +98,14 @@ include_once "../functions.php";
                 ?>
 
                 <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title"><?php
+                    <div class="mdui-card-primary-title">
+                        <?php
                         $test = get_newest_test($school,$grade);
                         if ($test == false) {
                             echo "无测试";
                         } else {
                             $name = link_admin()->query("select * from test_name where num='$test' and grade='$grade' and school='$school'")->fetch_array()['name'];
-                            echo $name;
+                            echo "<div class='mdui-text-center mdui-color-theme'>$name</div>";
                         }
                         ?></div><!-- 当前测试成绩的名称 -->
                     <div class="mdui-card-primary-subtitle">时间:<?
@@ -120,7 +122,7 @@ include_once "../functions.php";
                 <!-- 卡片的内容 -->
                 <div class="mdui-card-content" style="font-size: 16px"><?php
 
-                    echo "学校:" . get_school_name_by_school_num($school);
+                    echo "<h3>学校:" . get_school_name_by_school_num($school)."</h3>";
 
                     echo "<div class=\"mdui-table-fluid\">";
                     echo "<thead>
@@ -135,7 +137,7 @@ include_once "../functions.php";
         <tbody>";
                     $test_num = get_newest_test($school,$grade);
                     $name = $_SESSION['username'];
-                    $info = get_test_res($school, $name, $test_num);
+                    $info = get_test_res($school, $uid, $test_num);
                     $short_res = $info['short_run_res'];
                     $long_res = $info['long_run_res'];
                     $choose_res = $info['choose_res'];

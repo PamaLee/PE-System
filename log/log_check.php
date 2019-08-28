@@ -65,11 +65,10 @@ if (!isset($_GET['username'])) {
             link_admin()->query("UPDATE `teacher` SET login_time=login_time+1 where name='$username' and school='$schools'");
             $info = link_admin()->query("select * from teacher where school='$schools' and name='$username'")->fetch_array();
             link_admin()->query("update teacher set first_time_login='1' where school='$schools' and name='$username'");
-
-            echo "toteacher";
             $_SESSION['username'] = $username;
             $_SESSION['info'] = $info;
             $_SESSION['who'] = "teacher";
+            echo "toteacher";
             return true;
         } else {
             return false;

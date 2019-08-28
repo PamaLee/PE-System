@@ -10,9 +10,17 @@
  * 如果遇到問題，請使用郵箱聯繫
  *
  * //======關於這個文件=======
- * 創建時間：上午9:13
+ * 創建時間：上午7:02
  * 所屬項目名稱：PE-System
  */
+
+session_start();
+if (!isset($_SESSION['who']) and !isset($_SESSION['username']) and $_SESSION['who'] != "admin") {
+    session_unset();
+    session_destroy();
+    header("Location: ../index.php");
+}
+
 
 check_IP(GetIP());
 check_user($_SESSION['username']);
@@ -32,12 +40,12 @@ if (!empty($_POST)) {
                 $user = $_SESSION['username'];
             }
             $lo = $loto;
-            $body = $_POST;
+            $body = json_encode($_POST);
             $do = into_database($loto, GetIP(), $user, "POST", $body);
             if ($do == true) {
                 print "<br>您的IP已经被加入云端黑名单库";
             } else {
-                exit("<br>发生错误!您的操作已经被取消!");
+                exit("发生错误!您的操作已经被取消!");
             }
             exit();
         }
@@ -56,12 +64,12 @@ if (!empty($_POST)) {
                 $user = $_SESSION['username'];
             }
             $lo = $loto;
-            $body = $_GET;
+            $body = json_encode($_GET);
             $do = into_database($loto, GetIP(), $user, "GET", $body);
             if ($do == true) {
                 print "<br>您的IP已经被加入云端黑名单库";
             } else {
-                exit("<br>发生错误!您的操作已经被取消!");
+                exit("发生错误!您的操作已经被取消!");
             }
             exit();
         }
@@ -132,7 +140,7 @@ function check_IP($IP)
     $num = $ip_to->num_rows;
     $time = $ip_to->fetch_array()['time'];
     if ($num > 0) {
-        exit("<div class='mdui-valign mdui-container' style='padding-top: 150px'><div class='mdui-card mdui-color-red'><h1>对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779</h1></div></div> ");
+        exit("对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779");
     }
 }
 
@@ -142,6 +150,6 @@ function check_user($username)
     $num = $user_to->num_rows;
     $time = $user_to->fetch_array()['time'];
     if ($num > 0) {
-        exit("<div class='mdui-valign mdui-container' style='padding-top: 150px'><div class='mdui-card mdui-color-red'><h1>对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779</h1></div></div> ");
+        exit("对不起,您在我们的云端黑名单中!加入时间:$time,如有异议,请联系QQ:1249072779");
     }
 }

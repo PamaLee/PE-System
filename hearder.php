@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="<? echo $location ?>/public/css/mdui.css">
     <script src="<? echo $location ?>/public/js/mdui.js"></script>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="<? echo $location ?>/public/css/jquery.msgBox.min.css">
+    <script src="<? echo $location ?>/public/js/jquery.msgBox.min.js"></script>
     <style>
         @font-face {
             font-family: 'Number';   /*字体名称*/
@@ -41,4 +43,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>体育系统——<?php echo $title ?></title>
 </head>
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixed mdui-drawer-body-left">
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-light mdui-bottom-nav-fixed
+<?
+session_start();
+if (isset($_SESSION['info']) and $_SESSION['who']=="admin"){
+    echo " mdui-drawer-body-left ";
+}elseif (isset($_SESSION['info']) and $_SESSION['who']=="teacher"){
+    echo " mdui-drawer-body-left ";
+}
+?>">

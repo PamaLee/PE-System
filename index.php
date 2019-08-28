@@ -25,10 +25,34 @@ include_once "./verb.php";
 $title = "主页";
 include "./hearder.php";
 include "./functions_layout.php";
+
+$school=$_SESSION['info']['school'];
+$grade=$_SESSION['info']['grade'];
 ?>
 <?php
 top_menu($title,$location);
 ?>
+<div class="mdui-dialog mdui-color-theme" id="board">
+    <div class="mdui-container">
+        <div class="mdui-card mdui-text-center">
+            <h2><?php
+
+                $title=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['title'];
+                echo $title;
+                ?></h2>
+            <h3 class="mdui-color-pink">发布时间:<?php
+                $time=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['time'];
+                echo $time;
+                ?></h3>
+            <h3><?php
+
+                $board=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['body'];
+
+                echo $board;
+                ?></h3>
+        </div>
+    </div>
+</div>
 <div class="mdui-container">
 
     <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
@@ -67,4 +91,13 @@ top_menu($title,$location);
     </a>
 
 </div>
+<button id="boards" mdui-dialog="{target: '#board'}" style="display: none;">公告</button>
 
+<script>
+    window.onload = function(){
+        setTimeout(function () {
+            document.getElementById("boards").click();
+        },500);
+    }
+
+</script>

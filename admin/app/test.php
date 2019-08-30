@@ -57,7 +57,7 @@ $grade = $_SESSION['info']['grade'];
             echo "<td>" . $row['date'] . "</td>";
             echo "<td>" . get_isset_chengji_student($school,$grade,$row['num']) . "</td>";
             $name = $row['name'];
-            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name')\">修改</button></td>";
+            echo "<td><button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick=\"re('$name')\">修改</button> <button class='mdui-btn mdui-color-theme mdui-ripple' onclick=\"lx('$name')\">录入/修改</button></td>";
         }
 
         echo "</tbody>";
@@ -101,6 +101,26 @@ if (isset($_GET['test'])) {
         </div>
     </div>
 
+<div class="mdui-dialog mdui-color-theme" id="lx">
+        <div class="mdui-container mdui-color-white mdui-dialog-content">
+            班级:  <select class="mdui-select" mdui-select="{position: 'bottom'}" id="class" name="class" style="z-index: 10000">
+
+                <?php
+                $class = link_admin()->query("select * from class where school='$school' and grade='$grade'");
+                foreach ($class as $row) {
+                    $classes = $row['class'];
+                    echo "<option value=\"$classes\"";
+                    echo ">$classes 班</option>";
+                }
+                ?>
+            </select>
+            <br>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="lx_que()">确定</button>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="window.location.reload()">取消</button>
+
+        </div>
+    </div>
+
 <script>
     function check() {
         var clases = document.getElementById("class").value;
@@ -128,6 +148,18 @@ if (isset($_GET['test'])) {
             var urls = window.location.href.replace("#mdui-dialog", "");
             window.location.href = urls + "&c=new";
         });
+    }
+    function lx(test) {
+        mdui.confirm('您确定录入或修改吗?', function () {
+            mdui.alert(window.location.href);
+            var urls = window.location.href.replace("#mdui-dialog", "");
+            window.location.href=urls+"&test_lx="+test;
+        });
+    }
+
+    function lx_que() {
+        var classas = $("#class").val();
+        window.location.href = "index.php?t=re_test&class="+classas+"$test="+tests;
     }
 
     function que() {
@@ -211,6 +243,16 @@ var insts = new mdui.Dialog('#new',{
 </script>";
     
     
+}elseif (isset($_GET['test_lx'])){
+    echo "
+    <script>
+        var lxs = new mdui.Dialog('#lx',{
+                history:false,
+                modal:true
+            });
+        lxs.open();
+    </script>
+    ";
 }
 ?>
 

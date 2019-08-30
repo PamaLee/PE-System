@@ -35,11 +35,7 @@ if (isset($_GET["c"]) and $_GET['c'] == "del") {
 }
 
 ?>
-
-<?php
-
-
-?>
+<button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick="">修改</button>
 <div class="mdui-table-fluid">
     <table class="mdui-table mdui-table-hoverable">
         <?php
@@ -109,6 +105,25 @@ if (isset($_GET['teacher'])) {
 
     </div>
 </div>
+<div class="mdui-dialog mdui-color-theme" id="re">
+    <div class="mdui-container mdui-color-white mdui-dialog-content">
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons">account_box</i>
+            <label class="mdui-textfield-label">姓名</label>
+            <input class="mdui-textfield-input" type="text"  required
+                   name="teacher_name" id="teacher_name"/>
+        </div>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons">class</i>
+            <label class="mdui-textfield-label">班级</label>
+            <input class="mdui-textfield-input" type="text" required
+                   name="teacher_class" id="teacher_class"/>
+        </div>
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit2" onclick="new_teacher_que()">确定</button>
+        <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="teacher.close();history.go(-1);">取消</button>
+
+    </div>
+</div>
 
 <script>
     function check() {
@@ -122,6 +137,12 @@ if (isset($_GET['teacher'])) {
             window.location.href = urls + "&c=del&teacher=" + teacher;
         });
     }
+    function new_teacher(){
+        mdui.confirm('您确定添加一个教师吗?', function () {
+            var urls = window.location.href.replace("#mdui-dialog", "");
+            window.location.href = urls + "&c=newteacher;
+        });
+    }
 
     function re(teacher,classes) {
         mdui.confirm('您确定修改这个教师的信息吗?', function () {
@@ -132,7 +153,52 @@ if (isset($_GET['teacher'])) {
 
         });
     }
+    function new_teacher_que() {
+        var username = $("#teacher_name").val();
+        var classes = $("#teacher_class").val();
+        $("#submit").attr("disabled", "true");
+        document.getElementById("submit2").innerHTML = "添加中...";
+        $.ajax({
+            type: "GET",
+            url: "app/teacher.php",
+            data: "c=new_teacher&name=" + username + "&class=" + classes,
+            success: function (data) {
+                if (data.indexOf("服务端出现错误") != -1) {
+                    document.write("<h1>" + data + "</h1>");
+                }
+                if (data == "true") {
+                    mdui.snackbar({
+                        closeOnOutsideClick: false,
+                        timeout: "2000",
+                        message: '添加成功!',
+                        position: 'top'
+                    });
+                    document.getElementById("submit").innerHTML = "添加成功!";
+                    setTimeout("inst.close()", 2000);
+                    setTimeout("history.go(-1)", 3000);
+                }elseif(data == "class"){
+                    mdui.snackbar({
+                        closeOnOutsideClick: false,
+                        timeout: "2000",
+                        message: '该班级已经存在教师!',
+                        position: 'top'
+                    });
+                    document.getElementById("submit2").innerHTML = "添加失败!";
+                    setTimeout("window.location.reload()", 3000);
+                }else{
+                    mdui.snackbar({
+                        closeOnOutsideClick: false,
+                        timeout: "2000",
+                        message: '添加失败!正在重载!',
+                        position: 'top'
+                    });
+                    document.getElementById("submit2").innerHTML = "添加失败!";
+                    setTimeout("window.location.reload()", 3000);
+                }
+            }
+        })
 
+    }
     function que() {
         var username = $("#username").val();
         var classes = $("#classes").val();
@@ -164,14 +230,12 @@ if (isset($_GET['teacher'])) {
                         position: 'top'
                     });
                     document.getElementById("submit").innerHTML = "修改失败!";
-                    setTimeout("window.location.reload()", 8000);
+                    setTimeout("window.location.reload()", 3000);
                 }
             }
         })
 
     }
-
-
 </script>
 
 <?php
@@ -184,6 +248,35 @@ var inst = new mdui.Dialog('#re',{
   inst.open();
 </script>
 ";
+}
+if (isset($_GET['c']) and $_GET['c'] == "newteacher") {
+    echo "<script>
+var teacher = new mdui.Dialog('#newteacher',{
+    history:false,
+    modal:true
+});
+  teacher.open();
+</script>
+";
+}if (isset($_GET['c']) and $_GET['c'] == "new_teacher") {
+    $name=$_GET['name'];
+    $class=$_GET['class'];
+    $school=$_SESSION['info']['school'];
+    $grade=$_SESSION['info']['grade'];
+    $num=link_admin()->query("select * from teacher where school='' and grade='' and class='$class'")->num_rows;
+    if ($num>0){
+        echo "class";
+        return false;
+    }
+    $pwd=rand(100000000,9999999999);
+    $sql=link_admin()->query("insert into teacher (name, pwd, school, grade, class)values ('$name','$pwd','$school','$grade','$class')");
+    if ($sql){
+        echo "true";
+        return true;
+    }else{
+        echo "false";
+        return false;
+    }
 }
 ?>
 

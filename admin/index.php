@@ -71,6 +71,8 @@ include_once "../functions_layout.php";
         include_once "app/teacher.php";
     } elseif (isset($_GET['t']) and $_GET['t'] == "test") {
         include_once "app/test.php";
+    }elseif (isset($_GET['t']) and $_GET['t'] == "re_test") {
+        include_once "app/xl.php";
     }
     ?>
 </div>

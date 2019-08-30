@@ -46,7 +46,7 @@ if (!isset($_SESSION['username_check']) and !isset($_SESSION['school_check'])) {
     exit();
 }
 ?>
-<div class="mdui-container ">
+<div class="mdui-container" style="padding-top: 75px">
     <div class="mdui-col-md-6 mdui-col-offset-md-3">
         <h1 class="mdui-text-center">修改密码</h1>
         <h2 class="mdui-text-center">这是您第一次登陆,请您修改密码.</h2>

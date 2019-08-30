@@ -17,6 +17,7 @@
 session_start();
 include_once "functions.php";
 $username = $_SESSION['username'];
+
 //验证登录
 if (!isset($username)) {
     header("Location:" . $location . "log/");//跳转到登录界面
@@ -24,17 +25,35 @@ if (!isset($username)) {
 }
 $username = $_SESSION['username'];
 $schools = $_SESSION['school'];
-$first_time = link_admin()->query("SELECT * from student where name='$username' and school='$schools'")->fetch_array()['first_time_login'];
+
+$grade=$_SESSION['info']['grade'];
+$class=$_SESSION['info']['class'];
+$first_time = link_admin()->query("SELECT * from student where name='$username' and school='$schools' and grade='$grade' and class='$class'")->fetch_array()['first_time_login'];
 if ($first_time == 0) {
     header("Location:./log/pwd.php");
     exit();
 }
 
+if ($test_choose_no!=1){
+    $test=get_newest_test($schools,$grade);
+    if ($test!=false){
+        $uid=$_SESSION['info']['uid'];
+        $choose_whats=link_admin()->query("select * from test_res where uid='$uid' and test_num='$test' ")->fetch_array();
+        if ($choose_whats['choose_what']==NULL){
+            $_SESSION['test_choose']=$test;
+            header("Location:./choose.php");
+            exit();
+        }
+    }
+}
 
-$high_weight = link_admin()->query("Select * From student where name='$username' and school='$schools'")->fetch_array();
+
+
+$high_weight = link_admin()->query("Select * From student where name='$username'and grade='$grade' and class='$class' and school='$schools'")->fetch_array();
 $high = $high_weight['high'];
 $weight = $high_weight['weight'];
-if (empty($high) or empty($weight)) {
+$choose_what=$high_weight['choose_what'];
+if (empty($high) or empty($weight) or $choose_what==0) {
     header("Location: ./log/info.php");
     exit();
 }

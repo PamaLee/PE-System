@@ -28,12 +28,14 @@ $grade = $_SESSION['info']['grade'];
 
 
 ?>
+
+<button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="new_test();">发布新测试</button>
+
 <div class="mdui-table-fluid">
     <table class="mdui-table mdui-table-hoverable">
         <?php
         echo " <thead>
         <tr>
-            <th>UID</th>
             <th>名称</th>
             <th>序号</th>
             <th>日期</th>
@@ -50,7 +52,6 @@ $grade = $_SESSION['info']['grade'];
                 $first = "是";
             }
             echo "<tr>";
-            echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['num'] . "</td>";
             echo "<td>" . $row['date'] . "</td>";
@@ -87,6 +88,19 @@ if (isset($_GET['test'])) {
     </div>
 </div>
 
+    <div class="mdui-dialog mdui-color-theme" id="new">
+        <div class="mdui-container mdui-color-white mdui-dialog-content">
+            <div class="mdui-textfield mdui-textfield-floating-label">
+                <i class="mdui-icon material-icons">account_box</i>
+                <label class="mdui-textfield-label">新测试的名称</label>
+                <input class="mdui-textfield-input" type="text" required name="name" id="name"/>
+            </div>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="new_que()">确定</button>
+            <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="insts.close();history.go(-2);">取消</button>
+
+        </div>
+    </div>
+
 <script>
     function check() {
         var clases = document.getElementById("class").value;
@@ -106,6 +120,13 @@ if (isset($_GET['test'])) {
             mdui.alert(window.location.href);
             var urls = window.location.href.replace("#mdui-dialog", "");
             window.location.href = urls + "&c=re&test=" + test;
+        });
+    }
+    function new_test() {
+        mdui.confirm('您确定发布一个新的测试吗?', function () {
+            mdui.alert(window.location.href);
+            var urls = window.location.href.replace("#mdui-dialog", "");
+            window.location.href = urls + "&c=new";
         });
     }
 
@@ -139,6 +160,35 @@ if (isset($_GET['test'])) {
     }
 
 
+    function new_que() {
+        var test_name = $("#name").val();
+        $("#submit").attr("disabled", "true");
+        document.getElementById("submit").innerHTML = "发布中...";
+        $.ajax({
+            type: "GET",
+            url: "app/test_check.php",
+            data: "c=new&grade=<?echo $_SESSION['info']['grade']?>&test_name="+test_name,
+            success: function (data) {
+                if (data.indexOf("服务端出现错误") != -1) {
+                    document.write("<h1>" + data + "</h1>");
+                }
+                if (data) {
+                    mdui.snackbar({
+                        closeOnOutsideClick: false,
+                        timeout: "2000",
+                        message: '发布成功!',
+                        position: 'top'
+                    });
+                    document.getElementById("submit").innerHTML = "发布成功!";
+                    setTimeout("insts.close()", 2000);
+                    setTimeout("history.go(-2)", 3000);
+                }
+            }
+        })
+
+    }
+
+
 </script>
 
 <?php
@@ -151,6 +201,16 @@ var inst = new mdui.Dialog('#re',{
   inst.open();
 </script>
 ";
+}elseif (isset($_GET['c']) and $_GET['c']=="new"){
+    echo "<script>
+var insts = new mdui.Dialog('#new',{
+    history:false,
+    modal:true
+});
+  insts.open();
+</script>";
+    
+    
 }
 ?>
 

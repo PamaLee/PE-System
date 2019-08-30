@@ -70,7 +70,7 @@ session_start();
                         return false;
                     }
                 } else {
-                    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and test_num='$test_num'")->num_rows;
+                    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and  test_num='$test_num'")->num_rows;
                     if ($num == 0) {
                         echo "<div class='mdui-text-center'><h2 class='mdui-text-color-pink' id='2'>对不起,暂无测试数据!</h2></div></div></div></div></div>";
                         return false;
@@ -106,7 +106,7 @@ session_start();
         <tbody>";
                     $grade=$_SESSION['info']['grade'];
                     $school=$_SESSION['info']['school'];
-                    $uid=$_SESSION['info']['uid'];
+                    $class=$_SESSION['info']['class'];
                     if (isset($_GET['grade'])) {
                         $te = $_GET['grade'];
                         $rs = link_admin()->query("select * from student where school='$school' and grade='$grade' and class='$class' ORDER BY `study_hao` ASC");
@@ -115,14 +115,15 @@ session_start();
                     }
                     foreach ($rs as $to) {
                         $name=$to['name'];
+                        $uid=$to['uid'];
                         if (isset($_GET['grade'])) {
                             $te = $_GET['grade'];
                             $res=link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and uid='$uid' and test_num='$te' order by study_hao ASC")->fetch_array();
                         } else {
                             $res=link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and uid='$uid' and test_num='$test_num' order by study_hao ASC")->fetch_array();
                         }
-                        $names = $res['name'];
-                        $sex = $res['sex'];
+                        $names = $to['name'];
+                        $sex = $to['sex'];
                         if ($sex == 0) {
                             $sex = "女";
                         } else {
@@ -131,10 +132,35 @@ session_start();
                         $study_hao = $to['study_hao'];
                         $shortrun = $res['short_run_sc'];
                         $longrun = $res['long_run_sc'];
-                        $choose_what = $res['choose_what'];
                         $choose_sc = $res['choose_sc'];
-                        $zong = $res['zong_res'];
-                        $choose_name = get_choose_name($choose_what);
+                        $choose_what = $res['choose_what'];
+                        if (!empty($choose_what)){
+                            $choose_name = get_choose_name($choose_what);
+                        }else{
+                            $choose_name= "缺失";
+                        }
+
+                        if (empty($shortrun)){
+                            $shortrun="缺失";
+                        }
+                        if (empty($longrun)){
+                            $longrun="缺失";
+                        }
+                        if (empty($choose_sc)){
+                            $choose_sc="缺失";
+                        }
+
+
+
+                        if (!empty($shortrun) and !empty($longrun) and !empty($choose_sc)){
+                            $zong=$shortrun+$longrun+$choose_sc;
+                            if ($shortrun=="缺失" or $longrun=="缺失" or $choose_sc=="缺失"){
+                                $zong="正在统计";
+                            }
+                        }else{
+                            $zong="正在统计";
+                        }
+
                         echo "<tr>
             <td>" . $study_hao . "</td>
             <td>" . $name . "</td>

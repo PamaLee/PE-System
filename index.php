@@ -18,7 +18,7 @@
 //error_reporting(-1);
 //ini_set('display_errors', 1);
 
-
+session_start();
 $location = "./";
 include_once "functions.php";
 include_once "./verb.php";
@@ -32,27 +32,44 @@ $grade=$_SESSION['info']['grade'];
 <?php
 top_menu($title,$location);
 ?>
-<div class="mdui-dialog mdui-color-theme" id="board">
-    <div class="mdui-container">
-        <div class="mdui-card mdui-text-center">
-            <h2><?php
 
-                $title=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['title'];
-                echo $title;
-                ?></h2>
-            <h3 class="mdui-color-pink">发布时间:<?php
-                $time=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['time'];
-                echo $time;
-                ?></h3>
-            <h3><?php
+<?php
+if (!isset($_SESSION['board'])){
+echo "<div class=\"mdui-dialog mdui-color-theme\" id=\"board\">
+    <div class=\"mdui-container\">
+        <div class=\"mdui-card mdui-text-center\">
+            <h2>";
 
-                $board=link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['body'];
+$title = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['title'];
+echo $title . "</h2>";
+?>
+<h3 class="mdui-color-pink">发布时间:<?php
+    $time = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['time'];
+    echo $time;
+    ?></h3>
+<h3><?php
 
-                echo $board;
-                ?></h3>
+    $board = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['body'];
+
+    echo $board."</h3>
         </div>
     </div>
 </div>
+<script>
+    window.onload = function(){
+        setTimeout(function () {
+            document.getElementById(\"boards\").click();
+        },500);
+    }
+
+</script>
+";
+
+
+
+    $_SESSION['board']=1;
+
+}?>
 <div class="mdui-container">
 
     <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
@@ -93,11 +110,5 @@ top_menu($title,$location);
 </div>
 <button id="boards" mdui-dialog="{target: '#board'}" style="display: none;">公告</button>
 
-<script>
-    window.onload = function(){
-        setTimeout(function () {
-            document.getElementById("boards").click();
-        },500);
-    }
 
-</script>
+

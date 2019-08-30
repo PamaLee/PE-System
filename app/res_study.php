@@ -98,11 +98,12 @@ include_once "../functions.php";
                 if ($second = get_second_test($_SESSION['school']) != false) {
                     $newest = get_newest_test($school,$grade);
                     $username = $_SESSION['username'];
-                    if (link_admin()->query("select * from test_res where school='$school' and test_num='$newest' and name='$username'")->num_rows == 0) {
-                        if (link_admin()->query("select * from test_res where school='$school' and test_num='$second' and name='$username'")->num_rows == 0) {
+                    $uid=$_SESSION['info']['uid'];
+                    if (link_admin()->query("select * from test_res where school='$school' and test_num='$newest' and uid='$uid'")->num_rows == 0) {
+                        if (link_admin()->query("select * from test_res where school='$school' and test_num='$second' and uid='$uid'")->num_rows == 0) {
                             echo "<h3 class='mdui-color-pink'>对不起,暂时没有您的成绩信息</h3>";
                         } else {
-                            $info = link_admin()->query("select * from test_res where school='$school' and test_num='$newest' and name='$username'")->fetch_array();
+                            $info = link_admin()->query("select * from test_res where school='$school' and test_num='$newest' and uid='$uid'")->fetch_array();
                             $choose = get_choose_name($info['choose_what']);
                             echo "<h4>考试选项($choose):</h4>
                 <h4 class=\"mdui-text-color-red\">" . fen_to_beautiful($info['choose_what'], 12) . "</h4>

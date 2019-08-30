@@ -26,7 +26,7 @@ include_once "../hearder.php";
 top_menu("完善您的信息",$location)
 ?>
 
-<div class="mdui-container">
+<div class="mdui-container" style="padding-top: 75px">
     <div class="mdui-col-md-6 mdui-col-offset-md-3">
         <h1 class="mdui-text-center">完善信息</h1>
         <h2 class="mdui-text-center">请以实际填写，完善信息后才能使用哦！</h2>

@@ -34,13 +34,27 @@ include_once "../functions.php";
                 <div class="mdui-card-media">
 
                     <div class="number" style="text-align: center;font-size: <?php
+                    $name = $_SESSION['info']['name'];
+                    $uid= $_SESSION['info']['uid'];
+                    $res = link_admin()->query("select * from test_res where school='$school' and uid='$uid' and test_num='$test'")->fetch_array();
+                    $shortrun = $res['short_run_sc'];
+                    $longrun = $res['long_run_sc'];
+                    $choose_sc = $res['choose_sc'];
+                    if (!empty($shortrun) and !empty($longrun) and !empty($choose_sc)) {
+                        $zong_res = $shortrun + $longrun + $choose_sc;
+                    }else{
+                        $zong_res = "正在统计";
+                    }
+
                     $grade=$_SESSION['info']['grade'];
                     $school = $_SESSION['info']['school'];
                     $test = get_newest_test($school,$grade);
                     if ($test == false) {
                         echo "20px";
+                    }elseif ($zong_res=="正在统计"){
+                        echo "20px";
                     } else {
-                        echo "300px";
+                        echo "200px";
                     }
                     ?>
                             ;color:
@@ -52,7 +66,14 @@ include_once "../functions.php";
                         $name = $_SESSION['info']['name'];
                         $uid= $_SESSION['info']['uid'];
                         $res = link_admin()->query("select * from test_res where school='$school' and uid='$uid' and test_num='$test'")->fetch_array();
-                        $zong_res = $res['zong_res'];
+                        $shortrun = $res['short_run_sc'];
+                        $longrun = $res['long_run_sc'];
+                        $choose_sc = $res['choose_sc'];
+                    if (!empty($shortrun) and !empty($longrun) and !empty($choose_sc)) {
+                        $zong_res = $shortrun + $longrun + $choose_sc;
+                    }else{
+                        $zong_res = "正在统计";
+                    }
                         $num = $zong_res;
 
                         if ($num > 20 and $num < 30) {
@@ -67,10 +88,16 @@ include_once "../functions.php";
                             echo "green";
                         }
                     }
+
+                    $test_name=link_admin()->query("select * from test_name where num='$test'")->fetch_array()['name'];
                     ?>">
                         <?php
                         if ($test == false) {
                             echo "当前暂无任何测试成绩";
+                            echo "</div></div></div></div></div></div>";
+                            return false;
+                        }elseif ($num=="正在统计"){
+                            echo "<h2 class='mdui-color-theme mdui-text-center'>$test_name</h2><div class='mdui-color-pink mdui-text-center'>正在统计您的成绩</div>";
                             echo "</div></div></div></div></div></div>";
                             return false;
                         } else {
@@ -121,7 +148,7 @@ include_once "../functions.php";
 
                 <!-- 卡片的内容 -->
                 <div class="mdui-card-content" style="font-size: 16px"><?php
-
+                    $test_choose=link_admin()->query("select * from test_res where test_num='$test_num' and school='$school' and grade='$grade' and uid='$uid'")->fetch_array()['choose_what'];
                     echo "<h3>学校:" . get_school_name_by_school_num($school)."</h3>";
 
                     echo "<div class=\"mdui-table-fluid\">";
@@ -130,7 +157,7 @@ include_once "../functions.php";
         <tr>
             <th>50米成绩</th>
             <th>长跑成绩</th>
-            <th>" . get_choose_name($_SESSION['info']['choose_what']) . "</th>
+            <th>" . get_choose_name($test_choose) . "</th>
             <th>总成绩</th>
         </tr>
         </thead>
@@ -144,11 +171,10 @@ include_once "../functions.php";
                     $short_sc = $info['short_run_sc'];
                     $long_sc = $info['long_run_sc'];
                     $choose = $info['choose_sc'];
-                    $zong_res = $info['zong_res'];
                     echo "<tr>
 <td>" . fen_to_beautiful("50米", $short_res) . "</td>
 <td>" . fen_to_beautiful("长跑", $long_res) . "</td>
-<td>" . fen_to_beautiful(get_choose_name($_SESSION['info']['choose_what']), $choose_res) . "</td>
+<td>" . fen_to_beautiful(get_choose_name($test_choose), $choose_res) . "</td>
 <td>$zong_res</td>
 </tr>
 </tbody>

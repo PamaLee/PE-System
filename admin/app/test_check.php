@@ -18,6 +18,34 @@ include_once "../verb.php";
 include_once "../../functions.php";
 
 if (!isset($_GET['rename'], $_GET['name'])) {
+    if (isset($_GET['c']) and $_GET['c']=="new"){
+        $grade=$_GET['grade'];
+        $test_name=$_GET['test_name'];
+        $school=$_SESSION['info']['school'];
+        $name_if=link_admin()->query("select * from test_name where school='$school' and grade='$grade' and name='$test_name'")->num_rows;
+        if ($name_if>0){
+            echo "false";
+            return false;
+        }else{
+            $date=date("Y-m-d");
+            $test=link_admin()->query("insert into test_name (name, school, grade,date) values ('$test_name','$school','$grade','$date')");
+            if ($test){
+                $num=link_admin()->query("select * from test_name where school='$school' and grade='$grade' and name='$test_name'")->fetch_array()['num'];
+            }else{
+                echo "false";
+                return false;
+            }
+            $student=link_admin()->query("select * from student where school='$school' and grade='$grade'");
+            foreach ($student as $row){
+                $class=$row['class'];
+                $uid=$row['uid'];
+                $study_hao=$row['study_hao'];
+                link_admin()->query("insert into test_res(school, grade, class, uid, study_hao, test_num) values ('$school','$grade','$class','$uid','$study_hao','$num')");
+            }
+                echo "true";
+                return true;
+        }
+    }
     echo "false";
     return false;
 } else {

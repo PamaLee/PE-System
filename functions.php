@@ -43,6 +43,14 @@ function message($message, $p = "top", $timeout = "1000")
             </script>";
 }
 
+
+
+function colors($message){
+    return "<span class='mdui-text-color-red'>-</span><span class='mdui-text-color-orange'>-</span><span class='mdui-text-color-yellow'>-</span><span class='mdui-text-color-green'>-</span><span class='mdui-text-color-cyan'>-</span><span class='mdui-text-color-blue'>-</span><span class='mdui-text-color-purple'>-</span>".$message."<span class='mdui-text-color-purple'>-</span><span class='mdui-text-color-blue'>-</span><span class='mdui-text-color-cyan'>-</span><span class='mdui-text-color-green'>-</span><span class='mdui-text-color-yellow'>-</span><span class='mdui-text-color-orange'>-</span><span class='mdui-text-color-red'>-</span>";
+}
+
+
+
 /**
  * @param $name
  * @return array
@@ -731,7 +739,7 @@ function get_second_test($school)
 {
     $test_all = link_admin()->query("select * from test_name where school='$school' order by date DESC ");
     if ($test_all->num_rows > 1) {
-        return $test_all->fetch_all()[1];
+        return $test_all->fetch_all()[0];
     } else {
         return false;
     }
@@ -784,13 +792,29 @@ function get_student_login_time($school,$grade){
     return $login_time;
 }
 
+function get_student_class_login_time($school,$grade,$class){
+    $student=link_admin()->query("select * from student where school='$school' and grade='$grade' and class='$class'");
+    $login_time = 0;
+    foreach ($student as $row) {
+        $login_time = $login_time + $row['login_time'];
+    }
+    return $login_time;
+}
+
 
 
 function get_isset_chengji_student($school, $grade, $test_num)
 {
-    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and test_num='$test_num'")->num_rows;
+    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade'  and test_num='$test_num' and `long_run_sc` != 'null' AND `short_run_sc` != 'null' AND `choose_sc` != 'null'")->num_rows;
     return $num;
 }
+
+function get_isset_class_chengji_student($school, $grade, $test_num,$class)
+{
+    $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and test_num='$test_num' and `long_run_sc` != 'null' AND `short_run_sc` != 'null' AND `choose_sc` != 'null'")->num_rows;
+    return $num;
+}
+
 
 
 

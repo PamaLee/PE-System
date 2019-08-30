@@ -32,7 +32,7 @@ if (isset($_GET['c']) and $_GET['c'] == 'xl') {
 }
 
 if (isset($_GET['c']) and $_GET['c']=="daochu"){
-    include_once "dc.php";
+    header("Location:app/dc.php?&test=".$_GET['test']);
     return false;
 }
 ?>
@@ -43,7 +43,6 @@ if (isset($_GET['c']) and $_GET['c']=="daochu"){
         <?php
         echo " <thead>
         <tr>
-            <th>UID</th>
             <th>名称</th>
             <th>序号</th>
             <th>日期</th>
@@ -63,9 +62,8 @@ if (isset($_GET['c']) and $_GET['c']=="daochu"){
                 $first = "是";
             }
             $nums = $row['num'];
-            $numnum = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and test_num='$nums'")->num_rows;
+            $numnum=get_isset_class_chengji_student($school,$grade,$nums,$class);
             echo "<tr>";
-            echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['num'] . "</td>";
             echo "<td>" . $row['date'] . "</td>";

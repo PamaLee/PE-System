@@ -34,8 +34,42 @@ if (isset($_GET["c"]) and $_GET['c'] == "del") {
     }
 }
 
+if (isset($_GET['c']) and $_GET['c'] == "new_teacher") {
+    $name=$_GET['name'];
+    $class=$_GET['class'];
+    $school=$_SESSION['info']['school'];
+    $grade=$_SESSION['info']['grade'];
+    $num=link_admin()->query("select * from teacher where school='$school' and grade='$grade' and class='$class'")->num_rows;
+    if ($num>0){
+        echo "class";
+        return false;
+    }
+    $pwd="12345678";
+    $pwd=md5($pwd);
+    $uid=rand(100000,999999);
+    $sql=link_admin()->query("insert into teacher (uid,name, pwd, school, grade, class)values ('$uid','$name','$pwd','$school','$grade','$class')");
+    if ($sql){
+        echo "true";
+        return true;
+    }else{
+        echo "false";
+        return false;
+    }
+}
+
 ?>
-<button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick="">修改</button>
+
+
+<button class='mdui-btn mdui-color-theme-accent mdui-ripple' onclick="new_teacher()">添加</button>
+<script>
+    function new_teacher(){
+        mdui.confirm('您确定添加一个教师吗?', function () {
+            var ur = window.location.href.replace("#mdui-dialog", "");
+            mdui.alert(ur);
+            window.location.href = ur + "&c=newteacher";
+        });
+    }
+</script>
 <div class="mdui-table-fluid">
     <table class="mdui-table mdui-table-hoverable">
         <?php
@@ -62,7 +96,7 @@ if (isset($_GET["c"]) and $_GET['c'] == "del") {
             echo "<td>" . $row['uid'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['class'] . "班</td>";
-            echo "<td>*********</td>";
+            echo "<td>".$row['pwd']."</td>";
             echo "<td>" . $row['login_time'] . "</td>";
             echo "<td>" . $first . "</td>";
             $name = $row['name'];
@@ -100,12 +134,18 @@ if (isset($_GET['teacher'])) {
             <input class="mdui-textfield-input" type="text" value="<?php echo $infoes['class']; ?>" required
                    name="classes" id="classes"/>
         </div>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons">lock</i>
+            <label class="mdui-textfield-label">密码</label>
+            <input class="mdui-textfield-input" type="text"  required
+                   name="pwd" id="pwd"/>
+        </div>
         <button class="mdui-btn mdui-color-theme-accent mdui-ripple" id="submit" onclick="que()">确定</button>
         <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="inst.close();history.go(-1);">取消</button>
 
     </div>
 </div>
-<div class="mdui-dialog mdui-color-theme" id="re">
+<div class="mdui-dialog mdui-color-theme" id="newteacher">
     <div class="mdui-container mdui-color-white mdui-dialog-content">
         <div class="mdui-textfield mdui-textfield-floating-label">
             <i class="mdui-icon material-icons">account_box</i>
@@ -137,12 +177,8 @@ if (isset($_GET['teacher'])) {
             window.location.href = urls + "&c=del&teacher=" + teacher;
         });
     }
-    function new_teacher(){
-        mdui.confirm('您确定添加一个教师吗?', function () {
-            var urls = window.location.href.replace("#mdui-dialog", "");
-            window.location.href = urls + "&c=newteacher;
-        });
-    }
+
+
 
     function re(teacher,classes) {
         mdui.confirm('您确定修改这个教师的信息吗?', function () {
@@ -156,7 +192,7 @@ if (isset($_GET['teacher'])) {
     function new_teacher_que() {
         var username = $("#teacher_name").val();
         var classes = $("#teacher_class").val();
-        $("#submit").attr("disabled", "true");
+        $("#submit2").attr("disabled", "true");
         document.getElementById("submit2").innerHTML = "添加中...";
         $.ajax({
             type: "GET",
@@ -173,10 +209,10 @@ if (isset($_GET['teacher'])) {
                         message: '添加成功!',
                         position: 'top'
                     });
-                    document.getElementById("submit").innerHTML = "添加成功!";
+                    document.getElementById("submit2").innerHTML = "添加成功!";
                     setTimeout("inst.close()", 2000);
                     setTimeout("history.go(-1)", 3000);
-                }elseif(data == "class"){
+                }if(data == "class") {
                     mdui.snackbar({
                         closeOnOutsideClick: false,
                         timeout: "2000",
@@ -185,7 +221,7 @@ if (isset($_GET['teacher'])) {
                     });
                     document.getElementById("submit2").innerHTML = "添加失败!";
                     setTimeout("window.location.reload()", 3000);
-                }else{
+                }if (data == 'false'){
                     mdui.snackbar({
                         closeOnOutsideClick: false,
                         timeout: "2000",
@@ -202,12 +238,13 @@ if (isset($_GET['teacher'])) {
     function que() {
         var username = $("#username").val();
         var classes = $("#classes").val();
+        var pwd = $("#pwd").val();
         $("#submit").attr("disabled", "true");
         document.getElementById("submit").innerHTML = "修改中...";
         $.ajax({
             type: "GET",
             url: "app/teacher_check.php",
-            data: "rename=<?echo $_GET['teacher']?>&reclass=<? echo $_GET['reclass']?>&name=" + username + "&class=" + classes,
+            data: "rename=<?echo $_GET['teacher']?>&reclass=<? echo $_GET['reclass']?>&name=" + username + "&class=" + classes+"pwd="+pwd,
             success: function (data) {
                 if (data.indexOf("服务端出现错误") != -1) {
                     document.write("<h1>" + data + "</h1>");
@@ -258,25 +295,6 @@ var teacher = new mdui.Dialog('#newteacher',{
   teacher.open();
 </script>
 ";
-}if (isset($_GET['c']) and $_GET['c'] == "new_teacher") {
-    $name=$_GET['name'];
-    $class=$_GET['class'];
-    $school=$_SESSION['info']['school'];
-    $grade=$_SESSION['info']['grade'];
-    $num=link_admin()->query("select * from teacher where school='' and grade='' and class='$class'")->num_rows;
-    if ($num>0){
-        echo "class";
-        return false;
-    }
-    $pwd=rand(100000000,9999999999);
-    $sql=link_admin()->query("insert into teacher (name, pwd, school, grade, class)values ('$name','$pwd','$school','$grade','$class')");
-    if ($sql){
-        echo "true";
-        return true;
-    }else{
-        echo "false";
-        return false;
-    }
 }
 ?>
 

@@ -1,114 +1,64 @@
-<?php
-/**
- * ___                      ___  _      _                   _
- * | _ \ __ _  _ __   __ _  | _ \(_) __ | |_   __ _  _ _  __| |
- * |  _// _` || '  \ / _` | |   /| |/ _|| ' \ / _` || '_|/ _` |
- * |_|  \__,_||_|_|_|\__,_| |_|_\|_|\__||_||_|\__,_||_|  \__,_|
- * 作者：Pama Richard - 李嘉珂
- * QQ：1249072779
- * 郵箱：pama@lfdevs.com
- * 如果遇到問題，請使用郵箱聯繫
- *
- * //======關於這個文件=======
- * 創建時間：上午8:23
- * 所屬項目名稱：PE-System
- */
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>开发者工坊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+	 <meta name="author" content="greaty">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#3f51b5">
+    <link rel="icon" href="/photos/ico.ico">
+    <link rel="stylesheet" href="public/material.css"/>
+    <link rel="stylesheet" href="public/css/mdui.css"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script defer src="public/material.js"></script>
+<style>
+.demo-layout-transparent {
+  background: url(http://i2.tiimg.com/629849/64a38fda5d57de18.png) center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  color: white;
+}
+	.main{
+    text-align: center;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+        z-index: 100000;
+}
+</style>
+</head>
+<body>
 
-
-//error_reporting(-1);
-//ini_set('display_errors', 1);
-
-session_start();
-$location = "./";
-include_once "functions.php";
-include_once "./verb.php";
-$title = "主页";
-include "./hearder.php";
-include "./functions_layout.php";
-
-$school=$_SESSION['info']['school'];
-$grade=$_SESSION['info']['grade'];
-?>
-<?php
-top_menu($title,$location);
-?>
-
-<?php
-if (!isset($_SESSION['board'])){
-echo "<div class=\"mdui-dialog mdui-color-theme\" id=\"board\">
-    <div class=\"mdui-container\">
-        <div class=\"mdui-card mdui-text-center\">
-            <h2>";
-
-$title = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['title'];
-echo $title . "</h2>";
-?>
-<h3 class="mdui-color-pink">发布时间:<?php
-    $time = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['time'];
-    echo $time;
-    ?></h3>
-<h3><?php
-
-    $board = link_admin()->query("select * from board where school='$school' and grade='$grade' order by time DESC LIMIT 1")->fetch_array()['body'];
-
-    echo $board."</h3>
-        </div>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title"><font color="white">开发者工坊</font></span>
+      <div class="mdl-layout-spacer"></div>
     </div>
-</div>
-<script>
-    window.onload = function(){
-        setTimeout(function () {
-            document.getElementById(\"boards\").click();
-        },500);
-    }
-
-</script>
-";
-
-
-
-    $_SESSION['board']=1;
-
-}?>
-<div class="mdui-container">
-
-    <div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab1">
-        <?php
-        include_once "app/spawn.php";
-        ?>
-    </div>
-
-<div id="tab2">
-    <?php
-    include_once "app/class_mem.php";
-    ?>
-</div>
-
-
-<div class="mdui-col-md-6 mdui-col-offset-md-3" id="tab3">
-    <?
-    include_once "app/res_study.php";
-    ?>
-</div>
+  </header>
+	<div class="main" style="padding-top: -100px">
+		<h3 style="color: white">
+	  体育评测系统-内测
+  </h3>
+		<h1 style="color: white">
+		欢迎回来!
+		</h1>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onClick="window.location.href='log/' ">
+            点击登录
+        </button>
+	</div>
 
 </div>
-
-<div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-color-indigo mdui-tab" mdui-tab>
-    <a href="#tab1" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">account_circle</i>
-        <label>主页</label>
-    </a>
-    <a href="#tab2" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">contact_phone</i>
-        <label>班级</label>
-    </a>
-    <a href="#tab3" class="mdui-ripple mdui-ripple-white">
-        <i class="mdui-icon material-icons">chrome_reader_mode</i>
-        <label>成绩分析</label>
-    </a>
-
-</div>
-<button id="boards" mdui-dialog="{target: '#board'}" style="display: none;">公告</button>
-
-
-
+</body>
+</html>

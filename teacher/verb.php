@@ -15,7 +15,7 @@
  */
 
 session_start();
-if (!isset($_SESSION['who']) and !isset($_SESSION['username']) and $_SESSION['who'] != "admin") {
+if (!isset($_SESSION['who']) or !isset($_SESSION['username']) or $_SESSION['who'] != "teacher") {
     session_unset();
     session_destroy();
     header("Location: ../index.php");

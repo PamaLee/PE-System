@@ -13,7 +13,7 @@
  * 創建時間：上午9:13
  * 所屬項目名稱：PE-System
  */
-
+session_start();
 check_IP(GetIP());
 check_user($_SESSION['username']);
 //验证是否存在黑名单

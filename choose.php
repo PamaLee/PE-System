@@ -94,7 +94,7 @@ if (isset($_GET['c']) and $_GET['c']=='l'){
                         position: 'top'
                     });
                     document.getElementById("submit").innerHTML = "完善成功!正在跳转";
-                    setTimeout("window.location.href='index.php'", 2000);
+                    setTimeout("window.location.href='student/'", 2000);
                 }
             }
         })

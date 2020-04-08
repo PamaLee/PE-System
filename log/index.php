@@ -22,6 +22,7 @@ include "../functions.php";
 include_once "verb.php";
 if (isset($_GET['c'])) {
     if ($_GET['c'] == "loginout") {
+        into_me($_SESSION['info']['name'],"退出登录");
         session_unset();
         session_destroy();
         t("成功安全退出您的账户！", "./");
@@ -191,19 +192,23 @@ top_menu($title,$location);
                 switch (data) {
                     case "tospawn":
                         $$("#submit").text("登陆成功！欢迎回来：" + username + "，正在为您跳转，请稍后...");
-                        setTimeout("window.location.href = \"../\"", 1000);
+                        setTimeout("window.location.href = \"../student/\"", 1000);
                         break;
                     case "topwd":
                         $$("#submit").text("登陆成功！欢迎回来：" + username + "，正在为您跳转，请稍后...");
                         setTimeout("window.location.href = \"./pwd.php\"", 1000);
                         break;
+                    case "to_teacher_pwd":
+                        $$("#submit").text("登陆成功！欢迎回来：" + username + "，正在为您跳转，请稍后...");
+                        setTimeout("window.location.href = \"./pwd_teacher.php\"", 1000);
+                        break;
                     case "toadmin":
                         $$("#submit").text("登陆成功！欢迎回来：" + username + "，正在为您跳转，请稍后...");
-                        setTimeout("window.location.href = \"../admin/index.php\"", 1000);
+                        setTimeout("window.location.href = \"../admin/\"", 1000);
                         break;
                     case "toteacher":
                         $$("#submit").text("登陆成功！欢迎回来：" + username + "，正在为您跳转，请稍后...");
-                        setTimeout("window.location.href = \"../teacher/index.php\"", 1000);
+                        setTimeout("window.location.href = \"../teacher/\"", 1000);
                         break;
                     default:
                         pwd_error();

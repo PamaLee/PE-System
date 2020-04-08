@@ -124,7 +124,7 @@ top_menu("完善您的信息",$location)
             success: function (data) {
                 if (data) {
                     $("#submit").text("完善成功，正在为您跳转，请稍后...");
-                    setTimeout("window.location.href = \"../\"", 1500);
+                    setTimeout("window.location.href = \"../student/\"", 1500);
                 } else {
                     mdui.snackbar({
                         closeOnOutsideClick: false,

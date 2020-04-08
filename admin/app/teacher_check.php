@@ -29,11 +29,12 @@ if (!isset($_GET['rename'], $_GET['name'], $_GET['class'], $_GET['reclass'])) {
     $reclass = $_GET['reclass'];
     $school = $_SESSION['info']['school'];
     $grade = $_SESSION['info']['grade'];
+    $pwd=md5($_GET['pwd']);
     if (!is_numeric($class) or !is_numeric($reclass)) {
         echo "false";
         return false;
     }
-    $sql = link_admin()->query("update teacher set name='$name',class='$class' where name='$rename' and grade='$grade' and school='$school' and class='$reclass'");
+    $sql = link_admin()->query("update teacher set name='$name',class='$class',pwd='$pwd' where name='$rename' and grade='$grade' and school='$school' and class='$reclass'");
     if ($sql) {
         echo "true";
         return true;

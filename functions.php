@@ -14,7 +14,7 @@
  * 所屬項目名稱：PE-System
  */
 
-
+define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
 include $location . "db.php";
 
 /**
@@ -813,6 +813,11 @@ function get_isset_class_chengji_student($school, $grade, $test_num,$class)
 {
     $num = link_admin()->query("select * from test_res where school='$school' and grade='$grade' and class='$class' and test_num='$test_num' and `long_run_sc` != 'null' AND `short_run_sc` != 'null' AND `choose_sc` != 'null'")->num_rows;
     return $num;
+}
+
+function into_me($name,$do){
+    $sql=link_admin()->query("insert into me (do, user)values ('$do','$name')");
+    return $sql;
 }
 
 

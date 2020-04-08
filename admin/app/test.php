@@ -159,7 +159,8 @@ if (isset($_GET['test'])) {
 
     function lx_que() {
         var classas = $("#class").val();
-        window.location.href = "index.php?t=re_test&class="+classas+"$test="+tests;
+
+        window.location.href = "index.php?t=re_test&class="+classas+"&test=<?if(isset($_GET['test_lx'])){echo $_GET['test_lx'];}else{echo 1;}?>";
     }
 
     function que() {

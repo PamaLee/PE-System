@@ -23,6 +23,7 @@ if (!isset($_GET['username'])) {
 } else {
     $username = $_GET['username'];
     $pwd = $_GET['pwd'];
+    $pwd = md5($pwd);
     $who = $_GET['who'];
     $school = $_GET['school'];
     if ($who == 'student') {
@@ -39,6 +40,7 @@ if (!isset($_GET['username'])) {
                 $last_login = date("Y-m-d H:i:s");
                 link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
                 link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");
+                into_me($username,"首次登陆");
                 echo "topwd";
                 return true;
             } else {
@@ -49,10 +51,12 @@ if (!isset($_GET['username'])) {
                 $last_login = date("Y-m-d H:i:s");
                 link_admin()->query("UPDATE `student` SET last_login='$last_login' where name='$username' and school='$schools'");
                 link_admin()->query("UPDATE `student` SET login_time=login_time+1 where name='$username' and school='$schools'");
+                into_me($username,"用户登录");
                 echo "tospawn";
                 return true;
             }
         } else {
+            into_me($username,"登录时密码错误");
             echo "false";
             return false;
         }
@@ -60,6 +64,15 @@ if (!isset($_GET['username'])) {
         $schools = link_admin()->query("select * from school where name='$school'")->fetch_assoc()['uid'];
         $num = link_admin()->query("select * from teacher where school='$schools' and  name='$username' and pwd='$pwd'")->num_rows;
         if ($num > 0) {
+            $first_login=link_admin()->query("select * from teacher where name='$naername' and school='$schools'")->fetch_array()['first_time_login'];
+            if ($first_login==0){
+                $_SESSION['username_check'] = $username;
+                $_SESSION['who_check'] = "student";
+                $_SESSION['school_check'] = $schools;
+                $_SESSION['info'] = get_info($schools, $username);
+                echo "to_teacher_pwd";
+                return true;
+            }
             $last_login = date("Y-m-d H:i:s");
             link_admin()->query("UPDATE `teacher` SET last_login='$last_login' where name='$username' and school='$schools'");
             link_admin()->query("UPDATE `teacher` SET login_time=login_time+1 where name='$username' and school='$schools'");
@@ -68,9 +81,12 @@ if (!isset($_GET['username'])) {
             $_SESSION['username'] = $username;
             $_SESSION['info'] = $info;
             $_SESSION['who'] = "teacher";
+            into_me($username,"教师登录成功");
             echo "toteacher";
             return true;
         } else {
+            into_me($username,"教师登录密码错误");
+                echo "false";
             return false;
         }
     } elseif ($who == "admin") {
@@ -81,11 +97,16 @@ if (!isset($_GET['username'])) {
         if ($num > 0) {
             $info = link_admin()->query("select * from admin where school='$schools' and name='$username'")->fetch_array();
             link_admin()->query("UPDATE `admin` SET login_time=login_time+1 where name='$username' and school='$schools'");
+            into_me($username,"管理员登录成功");
             echo "toadmin";
             $_SESSION['username'];
             $_SESSION['who'] = "admin";
             $_SESSION['info'] = $info;
             return true;
+        }else{
+            into_me($username,"管理员登录密码错误");
+            echo "false";
+            return false;
         }
     }
 }

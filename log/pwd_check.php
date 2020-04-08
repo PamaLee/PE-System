@@ -29,6 +29,7 @@ if (!isset($_GET['pwd'], $_GET['repwd'])) {
         echo "false";
         return false;
     } else {
+        $repwd=md5($repwd);
         $name = $_SESSION['username_check'];
         $school = $_SESSION['school_check'];
         $sql = link_admin()->query("UPDATE student set pwd='$repwd' where name='$name' and school='$school'");

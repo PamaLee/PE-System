@@ -19,9 +19,11 @@
 -->
 <head>
     <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="i84EPDsByV" />
     <link rel="stylesheet" href="<? echo $location ?>/public/css/mdui.css">
     <script src="<? echo $location ?>/public/js/mdui.js"></script>
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="<? echo $location ?>/photos/ico.ico" type="image/x-icon">
     <link rel="stylesheet" href="<? echo $location ?>/public/css/jquery.msgBox.min.css">
     <script src="<? echo $location ?>/public/js/jquery.msgBox.min.js"></script>
     <style>
@@ -40,6 +42,21 @@
             font-family: "Chinese";
         }
     </style>
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <title>体育系统——<?php echo $title ?></title>
 </head>

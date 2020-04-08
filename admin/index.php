@@ -72,7 +72,7 @@ include_once "../functions_layout.php";
     } elseif (isset($_GET['t']) and $_GET['t'] == "test") {
         include_once "app/test.php";
     }elseif (isset($_GET['t']) and $_GET['t'] == "re_test") {
-        include_once "app/xl.php";
+        include_once "app/xl_s.php";
     }
     ?>
 </div>
@@ -80,7 +80,6 @@ include_once "../functions_layout.php";
     function exit() {
         mdui.confirm('您确定安全退出账户吗?', function () {
             setTimeout("  window.location.href = \"../log/index.php?c=loginout\";",1000);
-
         });
     }
 </script>

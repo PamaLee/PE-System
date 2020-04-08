@@ -27,6 +27,7 @@ if (!isset($_GET['high']) or !isset($_GET['weight'])) {
     $weight = $_GET['weight'];
     $choose = $_GET['choose'];
     if (!is_numeric($weight) or !is_numeric($high)) {
+        into_me($name,"用户完善信息失败");
         echo "false";
         return false;
     }
@@ -39,9 +40,11 @@ if (!isset($_GET['high']) or !isset($_GET['weight'])) {
         $_SESSION['school'] = $school;
         $_SESSION['info'] = get_info($school, $name);
         $_SESSION['who'] = "student";
+        into_me($name,"用户完善信息成功");
         echo "true";
         return true;
     } else {
+        into_me($name,"用户完善信息失败2");
         echo "false";
         return false;
     }
